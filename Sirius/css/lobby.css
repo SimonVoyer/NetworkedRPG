@@ -1,0 +1,10 @@
+#gamesListContainer {
+	display: flex;
+	justify-content: center;
+}
+
+.availableGame {
+	width: 20vw;
+	height: 20vh;
+	border: black 1px solid;
+}

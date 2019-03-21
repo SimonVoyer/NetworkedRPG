@@ -10,17 +10,11 @@
 
 	require_once("partial/header.php");
 ?>
+	<script src="js/lobby.js"></script>
 
+	<p>Welcome to the lobby</p>
+	<div id="gamesListContainer">
 
-<p>Welcome to the lobby</p>
-
-<?php
-	if (isset($_SESSION["availableGames"])){
-	?>
-		<?=var_dump($_SESSION["availableGames"])  ?>
-	<?php
-	}
-?>
-
+	</div>
 <?php
 	require_once("partial/footer.php");
