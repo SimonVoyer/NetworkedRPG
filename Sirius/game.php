@@ -28,4 +28,14 @@
 </div>
 
 <?php
+	if(isset($_POST["attackResponse"])){
+		?>
+
+		<?= $_POST["attackResponse"] ?>
+
+		<?php
+	}
+?>
+
+<?php
 	require_once("partial/footer.php");

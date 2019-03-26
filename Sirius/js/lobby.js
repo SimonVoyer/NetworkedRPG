@@ -1,7 +1,6 @@
 window.onload = () => {
 
-
-	setInterval( ()=> fetch('phpProcessing/availableGamesList.php')
+	setInterval( ()=> fetch("phpProcessing/availableGamesList.php")
 	  .then(response => response.json())
 	  .then(data => {
 		  let container = document.getElementById("gamesListContainer");
@@ -17,11 +16,6 @@ window.onload = () => {
 	  }),
 	  2500)
 
-
-
-
-
-
 }
 
 //source: https://stackoverflow.com/questions/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
@@ -32,12 +26,15 @@ const clearChildren = node => {
 }
 
 const setClickListener = (node,id) => {
-
-	node.onclick = id => {
-		//ajax pour join la game en question
+	node.onclick = () => {
+		let formData = new FormData();
+		formData.append("id", id);
+		fetch("phpProcessing/joiningGame.php", {
+			method: "POST",
+			credentials: 'include',
+			body: formData
+		});
 	}
-
-
 }
 
 //stuff dans json
