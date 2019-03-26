@@ -9,6 +9,7 @@ window.onload = () => {
 		  data.forEach(gameJSON => {
 			  let node = document.createElement("div");
 			  node.setAttribute("class", "availableGame");
+			  setClickListener(node,gameJSON.id);
 			  let textNode = document.createTextNode(gameJSON.name);
 		      node.appendChild(textNode);
 			  container.appendChild(node);
@@ -28,6 +29,15 @@ const clearChildren = node => {
 	while (node.firstChild){
 		node.removeChild(node.firstChild);
 	}
+}
+
+const setClickListener = (node,id) => {
+
+	node.onclick = id => {
+		//ajax pour join la game en question
+	}
+
+
 }
 
 //stuff dans json

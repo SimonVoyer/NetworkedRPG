@@ -10,7 +10,7 @@
 
 	require_once("partial/header.php");
 ?>
-
+<script src="js/game.js"></script>
 <p>Welcome to the game</p>
 
 <div id="attackButtons">
