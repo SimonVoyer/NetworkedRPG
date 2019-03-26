@@ -1,3 +1,11 @@
+
+.availableGame {
+	width: 20vw;
+	height: 20vh;
+	border: black 1px solid;
+	margin-bottom: 25px;
+}
+
 #gamesListContainer {
 	display: flex;
 	justify-content: space-around;
@@ -5,9 +13,23 @@
 
 }
 
-.availableGame {
+#startButton {
+	max-width: 10vw;
+}
+
+p{
+	max-width: 10vw;
+}
+
+#testBox {
+	display: flex;
 	width: 20vw;
-	height: 20vh;
-	border: black 1px solid;
-	margin-bottom: 25px;
+}
+
+a{
+	margin-top: 1.5vh;
+	margin-left: 1.5vw;
+	width: 50px;
+	height: 23px;
+
 }

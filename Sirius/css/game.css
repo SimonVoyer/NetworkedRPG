@@ -1,0 +1,29 @@
+
+body{
+	position: relative;
+}
+
+.attackButton {
+	display: block;
+	width: 10vw;
+	height: 10vh;
+	border: black 2px solid;
+	border-radius: 5px;
+}
+
+#attackButtons {
+	display:flex;
+	justify-content: space-around;
+}
+
+#attack1 {
+	background-color: blue;
+}
+
+#attack2 {
+	background-color: green;
+}
+
+#attack3 {
+	background-color: red;
+}
