@@ -34,7 +34,7 @@ const setClickListener = (node,id) => {
 			method: "POST",
 			credentials: 'include',
 			body: formData
-		});
+		})
 	}
 }
 

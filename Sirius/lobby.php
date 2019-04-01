@@ -18,5 +18,6 @@
 	<div id="gamesListContainer">
 
 	</div>
+
 <?php
 	require_once("partial/footer.php");
