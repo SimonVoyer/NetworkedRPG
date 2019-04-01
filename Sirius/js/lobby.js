@@ -27,9 +27,10 @@ const clearChildren = node => {
 
 const setClickListener = (node,id) => {
 	node.onclick = () => {
+		console.log("clicker sur node où id ="+id);
 		let formData = new FormData();
 		formData.append("id", id);
-		fetch("phpProcessing/joiningGame.php", {
+		fetch("phpProcessing/joinGame.php", {
 			method: "POST",
 			credentials: 'include',
 			body: formData

@@ -13,7 +13,6 @@
 	<script src="js/lobby.js"></script>
 	<div id="testBox">
 		<p>Welcome to the lobby</p>
-		<a href="game.php"><button id="startButton">Start</button></a>
 	</div>
 
 	<div id="gamesListContainer">
