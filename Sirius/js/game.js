@@ -1,7 +1,7 @@
 window.onload = () => {
 	initEventListeners();
 	let stateJSON;
-	setInterval(fetchGameState, 2050);
+	setInterval(timeWarden, 500);
 }
 
 const sendAttack = attackName => {
@@ -47,6 +47,9 @@ const fetchGameState = () => {
 }
 
 const timeWarden = () => {
+	//chaque seconde on le rappel
+	//il check si ça fait deux seconde depuis le call du fetch
+	//si oui il rappel fetch, sinon il skip
 
 }
 
