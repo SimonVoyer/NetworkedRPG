@@ -1,3 +1,5 @@
+require("utilities.js");
+
 window.onload = () => {
 
 	setInterval( ()=> fetch("phpProcessing/availableGamesList.php")
@@ -18,12 +20,7 @@ window.onload = () => {
 
 }
 
-//source: https://stackoverflow.com/questions/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
-const clearChildren = node => {
-	while (node.firstChild){
-		node.removeChild(node.firstChild);
-	}
-}
+
 
 const setClickListener = (node,id) => {
 	node.onclick = () => {
@@ -34,6 +31,11 @@ const setClickListener = (node,id) => {
 			method: "POST",
 			credentials: 'include',
 			body: formData
+		}).then(response => response.json())
+		.then(data => {
+			if (data === "GAME_ENTERED") {
+				window.location.href = "game.php";
+			}
 		})
 	}
 }

@@ -6,7 +6,7 @@
 
 	require_once("action/CommonAction.php");
 
-	class GameAction extends CommonAction {
+	class GameStateAction extends CommonAction {
 		public $APIResponse;
 		public function __construct() {
 			parent::__construct(CommonAction::$VISIBILITY_PUBLIC);
@@ -14,6 +14,8 @@
 		}
 
 		protected function executeAction() {
-
+			$data = [];
+			$data["key"] = $_SESSION["key"];
+			$this->APIResponse = $this->callAPI("state", $data);
 		}
 	}

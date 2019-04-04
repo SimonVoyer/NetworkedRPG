@@ -7,6 +7,7 @@
 	require_once("CommonAction.php");
 
 	class JoinGameAction extends CommonAction {
+		public $APIResponse;
 
 		public function __construct() {
 			parent::__construct(CommonAction::$VISIBILITY_PUBLIC);
@@ -18,11 +19,7 @@
 				$data = [];
 				$data["key"] = $_SESSION["key"];
 				$data["id"] = $_POST["id"];
-				$APIResponse = $this->callAPI("enter", $data);
-				if ($APIResponse == "GAME_ENTERED") {
-					header("Location: ../game.php");
-					exit;
-				}
+				$this->APIResponse = $this->callAPI("enter", $data);
 			}
 		}
 	}

@@ -4,8 +4,8 @@
 		session_start();
 	}
 
-	require_once("../action/JoinGameAction.php");
-	$action = new JoinGameAction();
+	require_once("../action/GameStateAction.php");
+	$action = new GameStateAction();
 	$action->execute();
 
 	echo json_encode($action->APIResponse);

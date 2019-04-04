@@ -1,8 +1,11 @@
+require("utilities.js");
+
 window.onload = () => {
 
 	initEventListeners();
 
-
+	setInterval( ()=>,
+	2500)
 
 
 }
@@ -24,7 +27,6 @@ const initEventListeners = () => {
 		//Normal
 		console.log("Normal attack");
 		sendAttack("Normal");
-
 	}
 
 	document.getElementById("attack2").onclick = () => {
@@ -38,6 +40,26 @@ const initEventListeners = () => {
 		console.log("Special2 attack");
 		sendAttack("Special2");
 	}
+}
+
+const fetchGameState = () => {
+	fetch("phpProcessing/gameState.php")
+		.then(response => response.json())
+		.then(data => { return data });
+}
+
+const showGameState = stateJSON => {
+	let container = document.getElementById("JSONViewer");
+	clearChildren(container);
+	let gameState = stateJSON.game;
+	let playerState = stateJSON.player;
+	let othersState = stateJSON.other_players;
+
+
+
+
+	node.appendChild(textNode);
+	container.appendChild(node);
 
 
 }

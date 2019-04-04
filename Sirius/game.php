@@ -27,15 +27,10 @@
 	</div>
 </div>
 
-<?php
-	if(isset($_POST["attackResponse"])){
-		?>
+<div id = "JSONViewer">
 
-		<?= $_POST["attackResponse"] ?>
+</div>
 
-		<?php
-	}
-?>
 
 <?php
 	require_once("partial/footer.php");

@@ -8,7 +8,7 @@ body{
 	width: 10vw;
 	height: 10vh;
 	border: black 2px solid;
-	border-radius: 5px;
+	border-radius: 10px;
 }
 
 #attackButtons {
@@ -26,4 +26,12 @@ body{
 
 #attack3 {
 	background-color: red;
+}
+
+#JSONViewer {
+	display: block;
+	width: 30vw;
+	height: auto;
+	border: black 2px solid;
+	border-radius: 10px;
 }
