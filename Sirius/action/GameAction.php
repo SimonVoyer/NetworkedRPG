@@ -4,10 +4,10 @@
 		session_start();
 	}
 
-	require_once("action/CommonAction.php");
+	require_once("CommonAction.php");
 
 	class GameAction extends CommonAction {
-		public $APIResponse;
+
 		public function __construct() {
 			parent::__construct(CommonAction::$VISIBILITY_PUBLIC);
 

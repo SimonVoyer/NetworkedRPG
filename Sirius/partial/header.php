@@ -8,5 +8,6 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="css/lobby.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="css/game.css" />
+	<script src="js/utilities.js"></script>
 </head>
 <body>

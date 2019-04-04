@@ -31,7 +31,8 @@ body{
 #JSONViewer {
 	display: block;
 	width: 30vw;
-	height: auto;
+	height: 30vh;
 	border: black 2px solid;
 	border-radius: 10px;
+	margin-top: 20px;
 }

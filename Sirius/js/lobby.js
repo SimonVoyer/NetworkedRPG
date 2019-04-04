@@ -1,5 +1,3 @@
-require("utilities.js");
-
 window.onload = () => {
 
 	setInterval( ()=> fetch("phpProcessing/availableGamesList.php")
@@ -16,7 +14,7 @@ window.onload = () => {
 			  container.appendChild(node);
 		  });
 	  }),
-	  2500)
+	  2050)
 
 }
 
@@ -33,7 +31,9 @@ const setClickListener = (node,id) => {
 			body: formData
 		}).then(response => response.json())
 		.then(data => {
+			console.log("in lobby.js, 34, data is :" + data);
 			if (data === "GAME_ENTERED") {
+				console.log("in lobby.js, 34, entered if for relocation");
 				window.location.href = "game.php";
 			}
 		})
