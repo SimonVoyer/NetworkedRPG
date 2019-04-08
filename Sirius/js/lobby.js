@@ -14,8 +14,7 @@ window.onload = () => {
 			  container.appendChild(node);
 		  });
 	  }),
-	  2050)
-
+	  2000);
 }
 
 

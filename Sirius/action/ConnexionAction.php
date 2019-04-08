@@ -24,9 +24,9 @@
 				if (preg_match('/_/', $serverResponse) === 0) {
 					$_SESSION["key"] = $serverResponse;
 					$this->isConnected = true;
+					$_SESSION["visibility"] = CommonAction::$VISIBILITY_MEMBER;
 					header("location:lobby.php");
 					exit;
-
 				} else if(preg_match('/_/', $serverResponse) === 1) {
 					$this->isConnected = false;
 				}

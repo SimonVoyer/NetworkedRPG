@@ -1,7 +1,8 @@
 window.onload = () => {
 	initEventListeners();
-	let stateJSON;
-	setInterval(timeWarden, 500);
+	let stateJSON, postFetch;
+	fetchGameState();
+	setInterval(timeWarden, 700);
 }
 
 const sendAttack = attackName => {
@@ -38,19 +39,20 @@ const initEventListeners = () => {
 const fetchGameState = () => {
 	fetch("phpProcessing/gameState.php")
 		.then(response => response.json())
-		//.catch(error => console.error('Error:', error))
 		.then(data => {
+			postFetch = new Date();
 			stateJSON = data;
-			showGameState()
+			showGameState(); //****debug
 		}
 	);
 }
 
 const timeWarden = () => {
-	//chaque seconde on le rappel
-	//il check si ça fait deux seconde depuis le call du fetch
-	//si oui il rappel fetch, sinon il skip
-
+	let currentTime = new Date();
+	console.log(currentTime.getTime() - postFetch.getTime());
+	if ( currentTime.getTime() - postFetch.getTime() >= 2000){
+		fetchGameState();
+	}
 }
 
 const showGameState = () => {
