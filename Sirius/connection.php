@@ -3,15 +3,15 @@
 		session_start();
 	}
 
-	require_once("action/ConnexionAction.php");
-	$action = new ConnexionAction();
+	require_once("action/ConnectionAction.php");
+	$action = new ConnectionAction();
 	$action->execute();
 
 
 	require_once("partial/header.php");
 ?>
 
-	<form action="connexion.php" method="post">
+	<form action="connection.php" method="post">
 		<div class = "input">
 			username: <input type="text" name="username" id="username_input">
 		</div>
@@ -19,18 +19,18 @@
 			password: <input type="password" name="password" id="password_input">
 		</div>
 		<button type="submit">
-			Connexion
+			connection
 		</button>
 		<div>
 			<?php
 				if (isset($action->isConnected) && $action->isConnected  ) {
 					?>
-						connexion successful
+						connection successful
 
 					<?php
 				} else if (isset($action->isConnected) && !$action->isConnected ){
 					?>
-						connexion unsuccessful
+						connection unsuccessful
 
 					<?php
 				}

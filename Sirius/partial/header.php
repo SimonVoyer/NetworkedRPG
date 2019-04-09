@@ -7,9 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" media="screen" href="css/shared.css" />
 	<?php
-		if (preg_match("/connexion.php/", $_SERVER["PHP_SELF"]) === 1 ) {
+		if (preg_match("/connection.php/", $_SERVER["PHP_SELF"]) === 1 ) {
 			?>
-				<link rel="stylesheet" type="text/css" media="screen" href="css/connexion.css" />
+				<link rel="stylesheet" type="text/css" media="screen" href="css/connection.css" />
 			<?php
 		} else if (preg_match("/lobby.php/", $_SERVER["PHP_SELF"]) === 1){
 			?>

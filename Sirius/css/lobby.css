@@ -1,3 +1,9 @@
+html{
+	background-image: url("../images/background_hyrule_castle.jpg");
+	width: 100vw;
+	height: 100vh;
+}
+
 
 .availableGame {
 	width: 20vw;

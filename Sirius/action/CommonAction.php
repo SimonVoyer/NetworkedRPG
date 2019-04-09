@@ -25,7 +25,7 @@
 
 			if ($this->visibility > CommonAction::$VISIBILITY_PUBLIC) {
 				if (!isset($_SESSION["visibility"]) || $_SESSION["visibility"] < $this->visibility) {
-					header("location:connexion.php");
+					header("location:connection.php");
 					exit;
 				}
 			}

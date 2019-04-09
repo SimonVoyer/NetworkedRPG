@@ -50,7 +50,7 @@ const fetchGameState = () => {
 const timeWarden = () => {
 	let currentTime = new Date();
 	console.log(currentTime.getTime() - postFetch.getTime());
-	if ( currentTime.getTime() - postFetch.getTime() >= 2000){
+	if ( currentTime.getTime() - postFetch.getTime() >= 2050){
 		fetchGameState();
 	}
 }

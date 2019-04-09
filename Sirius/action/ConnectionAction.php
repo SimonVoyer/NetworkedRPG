@@ -6,7 +6,7 @@
 
 	require_once("action/CommonAction.php");
 
-	class ConnexionAction extends CommonAction {
+	class ConnectionAction extends CommonAction {
 
 		public $isConnected;
 
