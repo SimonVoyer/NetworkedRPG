@@ -1,8 +1,25 @@
 window.onload = () => {
-	initEventListeners();
 	let stateJSON, postFetch;
-	fetchGameState();
+	setTimeout(fetchGameState,2000);
+	let canvas = generateCanvas();
+	context = canvas.getContext("2d");
+	let background = new Image();
+	background.onload = () => {
+		context.drawImage(background,0,0);
+	}
+	background.src = "images/background_inside_castle.jpg";
+	initEventListeners();
+
 	//setInterval(timeWarden, 1100);
+}
+
+const generateCanvas = () => {
+	let canvas = document.createElement('canvas');
+	canvas.width  = screen.width;
+	canvas.height = screen.height;
+	canvas.style.zIndex   = -1;
+	document.getElementById("canvasContainer").appendChild(canvas)
+	return canvas;
 }
 
 const sendAttack = attackName => {
@@ -48,13 +65,13 @@ const fetchGameState = () => {
 	);
 }
 
-const timeWarden = () => {
-	let currentTime = new Date();
-	console.log(currentTime.getTime() - postFetch.getTime());
-	if ( currentTime.getTime() - postFetch.getTime() >= 2100){
-		fetchGameState();
-	}
-}
+// const timeWarden = () => {
+// 	let currentTime = new Date();
+// 	console.log(currentTime.getTime() - postFetch.getTime());
+// 	if ( currentTime.getTime() - postFetch.getTime() >= 2100){
+// 		fetchGameState();
+// 	}
+// }
 
 const showGameState = () => {
 	let node = document.getElementById("JSONViewer");
