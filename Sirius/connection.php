@@ -23,12 +23,7 @@
 		</button>
 		<div>
 			<?php
-				if (isset($action->isConnected) && $action->isConnected  ) {
-					?>
-						connection successful
-
-					<?php
-				} else if (isset($action->isConnected) && !$action->isConnected ){
+				 if (isset($action->isConnected) && !$action->isConnected ){
 					?>
 						connection unsuccessful
 

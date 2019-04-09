@@ -3,7 +3,7 @@ window.onload = () => {
 	setTimeout(fetchGameState,2000);
 	let canvas = generateCanvas();
 	context = canvas.getContext("2d");
-	let background = new Image();
+	let background = new Image(window.innerWidth,window.innerHeight);
 	background.onload = () => {
 		context.drawImage(background,0,0);
 	}
@@ -15,9 +15,9 @@ window.onload = () => {
 
 const generateCanvas = () => {
 	let canvas = document.createElement('canvas');
-	canvas.width  = screen.width;
-	canvas.height = screen.height;
-	canvas.style.zIndex   = -1;
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+	canvas.style.zIndex = -1;
 	document.getElementById("canvasContainer").appendChild(canvas)
 	return canvas;
 }
