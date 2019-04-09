@@ -11,7 +11,12 @@
 	require_once("partial/header.php");
 ?>
 <script src="js/game.js"></script>
-<p>Welcome to the game</p>
+
+<div id="canvasContainer">
+
+</div>
+
+
 
 <div id="attackButtons">
 	<div class="attackButton" id="attack1" >

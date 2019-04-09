@@ -2,7 +2,7 @@ window.onload = () => {
 	initEventListeners();
 	let stateJSON, postFetch;
 	fetchGameState();
-	setInterval(timeWarden, 700);
+	//setInterval(timeWarden, 1100);
 }
 
 const sendAttack = attackName => {
@@ -43,6 +43,7 @@ const fetchGameState = () => {
 			postFetch = new Date();
 			stateJSON = data;
 			showGameState(); //****debug
+			setTimeout(fetchGameState, 2000);
 		}
 	);
 }
@@ -50,7 +51,7 @@ const fetchGameState = () => {
 const timeWarden = () => {
 	let currentTime = new Date();
 	console.log(currentTime.getTime() - postFetch.getTime());
-	if ( currentTime.getTime() - postFetch.getTime() >= 2050){
+	if ( currentTime.getTime() - postFetch.getTime() >= 2100){
 		fetchGameState();
 	}
 }
