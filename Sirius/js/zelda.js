@@ -1,15 +1,14 @@
 class Zelda {
 
 	constructor() {
-		let columnCount = 4;
-		let rowCount = 4;
+		let columnCount = 12;
+		let rowCount = 1;
 		let refreshDelay = 100;
 		let loopColumns = true;
-		let scale = 1.0;
-		this.sprite = new TiledImage("images/zelda_sprites_normalized.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
+		let scale = 3.0;
+		this.sprite = new TiledImage("images/zelda_sprites_battle.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
 		this.changeSpriteRow(0);
-		this.changeSpriteInterval(1, rowCount);
-		//this.sprite.setFlipped(true);
+		this.changeSpriteInterval(1, columnCount);
 	}
 
 	tick(){

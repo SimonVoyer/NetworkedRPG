@@ -82,14 +82,9 @@ const showGameState = () => {
 	});
 }
 
-
-const summonAthos = (context) => {
-
-}
-
 const tick = (canvas, context, background, zelda, athos) => {
 	context.drawImage(background,0,0);
 	zelda.sprite.tick(canvas.width /2, 3*canvas.height/4 , context);
-	athos.sprite.tick(canvas.width /4, 3*canvas.height/4 , context)
+	athos.sprite.tick(canvas.width /2, canvas.height/5 , context)
 	window.requestAnimationFrame(()=> tick(canvas,context,background,zelda, athos))
 }
