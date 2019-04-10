@@ -10,7 +10,7 @@
 
 	require_once("partial/header.php");
 ?>
-	<script src="js/lobby.js"></script>
+
 	<div id="testBox">
 		<p>Welcome to the lobby</p>
 	</div>

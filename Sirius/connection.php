@@ -26,7 +26,6 @@
 				 if (isset($action->isConnected) && !$action->isConnected ){
 					?>
 						connection unsuccessful
-
 					<?php
 				}
 			?>

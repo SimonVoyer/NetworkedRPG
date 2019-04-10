@@ -14,10 +14,13 @@
 		} else if (preg_match("/lobby.php/", $_SERVER["PHP_SELF"]) === 1){
 			?>
 				<link rel="stylesheet" type="text/css" media="screen" href="css/lobby.css" />
+				<script src="js/lobby.js"></script>
 			<?php
 		} else if (preg_match("/game.php/", $_SERVER["PHP_SELF"]) === 1) {
 			?>
 				<link rel="stylesheet" type="text/css" media="screen" href="css/game.css" />
+				<script src="js/game.js"></script>
+				<script src="js/zelda.js"></script>
 			<?php
 		}
 	?>

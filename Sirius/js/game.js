@@ -10,7 +10,8 @@ window.onload = () => {
 	background.src = "images/background_inside_castle.jpg";
 	initEventListeners();
 
-	//setInterval(timeWarden, 1100);
+	let zelda = new Zelda();
+	tick();
 }
 
 const generateCanvas = () => {
@@ -87,4 +88,10 @@ const showGameState = () => {
 		let otherNode = document.createTextNode("||| other name: " + otherPlayer.name + "--- hp: " + otherPlayer.hp )
 		node.appendChild(otherNode);
 	});
+}
+
+const tick = () => {
+	zelda.sprite.tick();
+
+
 }

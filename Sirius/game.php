@@ -8,8 +8,6 @@
 	require_once("partial/header.php");
 ?>
 
-<script src="js/game.js"></script>
-
 <div id="canvasContainer"></div>
 
 <div id="attackButtons">
