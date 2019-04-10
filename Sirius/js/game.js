@@ -2,16 +2,16 @@ window.onload = () => {
 	let stateJSON, postFetch;
 	setTimeout(fetchGameState,2000);
 	let canvas = generateCanvas();
-	context = canvas.getContext("2d");
+	let context = canvas.getContext("2d");
 	let background = new Image(window.innerWidth,window.innerHeight);
 	background.onload = () => {
 		context.drawImage(background,0,0);
 	}
 	background.src = "images/background_inside_castle.jpg";
 	initEventListeners();
-
 	let zelda = new Zelda();
-	tick();
+	let athos = new Athos();
+	tick(canvas, context, background, zelda, athos);
 }
 
 const generateCanvas = () => {
@@ -66,14 +66,6 @@ const fetchGameState = () => {
 	);
 }
 
-// const timeWarden = () => {
-// 	let currentTime = new Date();
-// 	console.log(currentTime.getTime() - postFetch.getTime());
-// 	if ( currentTime.getTime() - postFetch.getTime() >= 2100){
-// 		fetchGameState();
-// 	}
-// }
-
 const showGameState = () => {
 	let node = document.getElementById("JSONViewer");
 	clearChildren(node);
@@ -90,8 +82,14 @@ const showGameState = () => {
 	});
 }
 
-const tick = () => {
-	zelda.sprite.tick();
 
+const summonAthos = (context) => {
 
+}
+
+const tick = (canvas, context, background, zelda, athos) => {
+	context.drawImage(background,0,0);
+	zelda.sprite.tick(canvas.width /2, 3*canvas.height/4 , context);
+	athos.sprite.tick(canvas.width /4, 3*canvas.height/4 , context)
+	window.requestAnimationFrame(()=> tick(canvas,context,background,zelda, athos))
 }
