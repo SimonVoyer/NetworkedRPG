@@ -8,14 +8,6 @@ class Zelda {
 
 	}
 
-	changeSpriteRow(row){
-		this.sprite.changeRow(row);
-	}
-
-	changeSpriteInterval(min,max){
-		this.sprite.changeMinMaxInterval(min, max);
-	}
-
 	battlePose() {
 		let columnCount = 12;
 		let rowCount = 1;
@@ -23,8 +15,8 @@ class Zelda {
 		let loopColumns = true;
 		let scale = 3.0;
 		this.sprite = new TiledImage("images/zelda_sprites_battle.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
-		this.changeSpriteRow(0);
-		this.changeSpriteInterval(1, columnCount);
+		this.sprite.changeRow(0);
+		this.sprite.changeMinMaxInterval(1, columnCount);
 	}
 
 	tookDamage() {
@@ -34,8 +26,8 @@ class Zelda {
 		let loopColumns = true;
 		let scale = 3.0;
 		this.sprite = new TiledImage("images/zelda_sprites_damage.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
-		this.changeSpriteRow(0);
-		this.changeSpriteInterval(1, columnCount);
+		this.sprite.changeRow(0);
+		this.sprite.changeMinMaxInterval(1, columnCount);
 	}
 
 	basicSpell() {
@@ -45,8 +37,8 @@ class Zelda {
 		let loopColumns = true;
 		let scale = 3.0;
 		this.sprite = new TiledImage("images/zelda_sprites_spell.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
-		this.changeSpriteRow(0);
-		this.changeSpriteInterval(1, columnCount);
+		this.sprite.changeRow(0);
+		this.sprite.changeMinMaxInterval(1, columnCount);
 	}
 
 	attackSpecial1() {

@@ -36,8 +36,11 @@ const sendAttack = (attackName, button) => {
 		credentials: 'include',
 		body: formData
 	});
-	button.style.pointerevents = 'none';
 	setTimeout( ()=> reactivateButton(button), 2000);
+}
+
+const battlePose = zelda => {
+	zelda.battlePose();
 }
 
 const initEventListeners = zelda => {
@@ -46,9 +49,10 @@ const initEventListeners = zelda => {
 	let buttonSpecial2 = document.getElementById("attack2");
 
 	buttonNormal.onclick = () => {
+		buttonNormal.style.pointerevents = 'none';
 		sendAttack("Normal", buttonNormal);
 		zelda.basicSpell();
-		setTimeout(zelda.battlePose, 1000);
+		setTimeout(()=> battlePose(zelda), 700);
 	}
 	buttonSpecial1.onclick = () => {
 		sendAttack("Special1",buttonSpecial1 );
