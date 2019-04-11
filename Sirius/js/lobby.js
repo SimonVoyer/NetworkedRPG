@@ -1,4 +1,6 @@
 window.onload = () => {
+	let musicManager = new MusicManager();
+	musicManager.playFallen();
 
 	setInterval( ()=> fetch("phpProcessing/availableGamesList.php")
 	  .then(response => response.json())

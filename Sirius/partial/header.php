@@ -10,6 +10,7 @@
 		if (preg_match("/connection.php/", $_SERVER["PHP_SELF"]) === 1 ) {
 			?>
 				<link rel="stylesheet" type="text/css" media="screen" href="css/connection.css" />
+				<script src="js/connection.js"></script>
 			<?php
 		} else if (preg_match("/lobby.php/", $_SERVER["PHP_SELF"]) === 1){
 			?>
@@ -27,5 +28,6 @@
 		}
 	?>
 	<script src="js/utilities.js"></script>
+	<script src="js/musicManager.js"></script>
 </head>
 <body>

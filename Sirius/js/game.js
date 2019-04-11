@@ -1,5 +1,7 @@
 window.onload = () => {
 	let stateJSON, postFetch;
+	let musicManager = new MusicManager();
+	musicManager.playNightmare();
 	setTimeout(fetchGameState,2000);
 	let canvas = generateCanvas();
 	let context = canvas.getContext("2d");
