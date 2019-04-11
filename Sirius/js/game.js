@@ -11,9 +11,9 @@ window.onload = () => {
 	}
 	background.src = "images/background_inside_castle.jpg";
 	let zelda = new Zelda(musicManager, canvas, context);
-	let elderOne = new ElderOne(musicManager, canvas, context);
-	initEventListeners(zelda);
-	tick( background, context, zelda, elderOne);
+	let ganon = new Ganon(musicManager, canvas, context);
+	initEventListeners(zelda,ganon); //ganon temporaire
+	tick( background, context, zelda, ganon);
 }
 const generateCanvas = () => {
 	let canvas = document.createElement('canvas');
@@ -40,11 +40,7 @@ const sendAttack = (attackName, button) => {
 	setTimeout( ()=> reactivateButton(button), 2000);
 }
 
-const battlePose = zelda => {
-	zelda.battlePose();
-}
-
-const initEventListeners = zelda => {
+const initEventListeners = (zelda,ganon) => {
 	let buttonNormal = document.getElementById("attack1");
 	let buttonSpecial1 = document.getElementById("attack2");
 	let buttonSpecial2 = document.getElementById("attack3");
@@ -53,16 +49,21 @@ const initEventListeners = zelda => {
 		//buttonNormal.style.pointerevents = 'none';
 		sendAttack("Normal", buttonNormal);
 		zelda.basicSpell();
-		setTimeout(()=> battlePose(zelda), 700);
+		setTimeout(()=> zelda.battlePose(), 700);
 	}
+
 	buttonSpecial1.onclick = () => {
 		sendAttack("Special1",buttonSpecial1 );
-		zelda.tookDamage();
-		setTimeout(()=> battlePose(zelda), 800);
+		setTimeout(()=> zelda.hover(),300);
+		setTimeout(()=> zelda.land(),2000)
+		setTimeout(()=> zelda.battlePose(), 2200);
+		zelda.startJump();
 	}
+
 	buttonSpecial2.onclick = () => {
 		sendAttack("Special2", buttonSpecial2);
 		zelda.summonSpirit();
+		ganon.attack();
 	}
 }
 
@@ -94,9 +95,9 @@ const showGameState = () => {
 	});
 }
 
-const tick = ( background, context, zelda, elderOne) => {
+const tick = ( background, context, zelda, ganon) => {
 	context.drawImage(background,0,0);
 	zelda.tick();
-	elderOne.tick();
-	window.requestAnimationFrame(()=> tick(background, context, zelda, elderOne));
+	ganon.tick();
+	window.requestAnimationFrame(()=> tick(background, context, zelda, ganon));
 }

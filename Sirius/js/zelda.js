@@ -63,4 +63,40 @@ class Zelda {
 		zelda.isSummonActive = false;
 	}
 
+	startJump() {
+		this.musicManager.playHoveringSpell();
+		let columnCount = 5;
+		let rowCount = 1;
+		let refreshDelay = 100;
+		let loopColumns = true;
+		let scale = 3.0;
+		this.sprite = new TiledImage("images/zelda_sprites_upwards.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
+		this.sprite.changeRow(0);
+		this.sprite.changeMinMaxInterval(1, columnCount);
+	}
+
+
+	hover(){
+		let columnCount = 5;
+		let rowCount = 1;
+		let refreshDelay = 100;
+		let loopColumns = true;
+		let scale = 3.0;
+		this.sprite = new TiledImage("images/zelda_sprites_hover.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
+		this.sprite.changeRow(0);
+		this.sprite.changeMinMaxInterval(1, columnCount);
+	}
+
+	land(){
+		let columnCount = 5;
+		let rowCount = 1;
+		let refreshDelay = 100;
+		let loopColumns = true;
+		let scale = 3.0;
+		this.sprite = new TiledImage("images/zelda_sprites_downwards.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
+		this.sprite.changeRow(0);
+		this.sprite.changeMinMaxInterval(1, columnCount);
+	}
+
+
 }

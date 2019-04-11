@@ -10,6 +10,7 @@ class MusicManager {
 		this.spellPath = "audio/zelda_sounds/zelda_spell.mp3"
 		this.spell2Path = "audio/zelda_sounds/zelda_spell2.mp3"
 		this.fallingPath = "audio/zelda_sounds/zelda_falling.mp3"
+		this.ganonAttackPath = "audio/ganon_sounds/ganon_attack.mp3"
 	}
 
 	playLullaby() {
@@ -55,5 +56,17 @@ class MusicManager {
 		let spell = new Audio(this.spellPath)
 		spell.loop = false;
 		spell.play();
+	}
+
+	playHoveringSpell() {
+		let spell2 = new Audio(this.spell2Path)
+		spell2.loop = false;
+		spell2.play();
+	}
+
+	playGanonAttack(){
+		let ganonAttack = new Audio(this.ganonAttackPath)
+		ganonAttack.loop = false;
+		ganonAttack.play();
 	}
 }

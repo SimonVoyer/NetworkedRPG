@@ -24,7 +24,7 @@
 				<script src="js/game.js"></script>
 				<script src="js/zelda.js"></script>
 				<script src="js/athos.js"></script>
-				<script src="js/elderOne.js"></script>
+				<script src="js/ganon.js"></script>
 			<?php
 		}
 	?>
