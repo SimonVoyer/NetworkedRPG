@@ -24,6 +24,7 @@ const generateCanvas = () => {
 }
 
 const reactivateButton = button => {
+	console.log("reactivating -> "+ button);
 	button.style.pointerevents = 'auto';
 }
 
@@ -49,6 +50,7 @@ const initEventListeners = zelda => {
 	let buttonSpecial2 = document.getElementById("attack2");
 
 	buttonNormal.onclick = () => {
+		console.log("deactivating -> "+ buttonNormal);
 		buttonNormal.style.pointerevents = 'none';
 		sendAttack("Normal", buttonNormal);
 		zelda.basicSpell();
