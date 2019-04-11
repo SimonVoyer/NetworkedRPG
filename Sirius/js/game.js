@@ -10,7 +10,7 @@ window.onload = () => {
 		context.drawImage(background,0,0);
 	}
 	background.src = "images/background_inside_castle.jpg";
-	let zelda = new Zelda();
+	let zelda = new Zelda(musicManager);
 	let athos = new Athos();
 	initEventListeners(zelda);
 	tick(canvas, context, background, zelda, athos);
@@ -26,7 +26,6 @@ const generateCanvas = () => {
 }
 
 const reactivateButton = button => {
-	console.log("reactivating -> "+ button);
 	button.style.pointerevents = 'auto';
 }
 
@@ -49,20 +48,21 @@ const battlePose = zelda => {
 const initEventListeners = zelda => {
 	let buttonNormal = document.getElementById("attack1");
 	let buttonSpecial1 = document.getElementById("attack2");
-	let buttonSpecial2 = document.getElementById("attack2");
+	let buttonSpecial2 = document.getElementById("attack3");
 
 	buttonNormal.onclick = () => {
-		console.log("deactivating -> "+ buttonNormal);
-		buttonNormal.style.pointerevents = 'none';
+		//buttonNormal.style.pointerevents = 'none';
 		sendAttack("Normal", buttonNormal);
 		zelda.basicSpell();
 		setTimeout(()=> battlePose(zelda), 700);
 	}
 	buttonSpecial1.onclick = () => {
-		sendAttack("Special1",buttonSpecial1 );
+		//sendAttack("Special1",buttonSpecial1 );
+		zelda.tookDamage();
+		setTimeout(()=> battlePose(zelda), 800);
 	}
 	buttonSpecial2.onclick = () => {
-		sendAttack("Special2", buttonSpecial2);
+		//sendAttack("Special2", buttonSpecial2);
 	}
 }
 

@@ -1,7 +1,8 @@
 class Zelda {
 
-	constructor() {
+	constructor(musicManager) {
 		this.battlePose();
+		this.musicManager = musicManager;
 	}
 
 	tick(){
@@ -20,7 +21,8 @@ class Zelda {
 	}
 
 	tookDamage() {
-		let columnCount = 8;
+		this.musicManager.playDamage();
+		let columnCount = 9;
 		let rowCount = 1;
 		let refreshDelay = 100;
 		let loopColumns = true;
@@ -31,6 +33,7 @@ class Zelda {
 	}
 
 	basicSpell() {
+		this.musicManager.playSpell();
 		let columnCount = 8;
 		let rowCount = 1;
 		let refreshDelay = 100;
