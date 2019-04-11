@@ -8,9 +8,9 @@ window.onload = () => {
 		context.drawImage(background,0,0);
 	}
 	background.src = "images/background_inside_castle.jpg";
-	initEventListeners();
 	let zelda = new Zelda();
 	let athos = new Athos();
+	initEventListeners(zelda);
 	tick(canvas, context, background, zelda, athos);
 }
 
@@ -23,7 +23,12 @@ const generateCanvas = () => {
 	return canvas;
 }
 
-const sendAttack = attackName => {
+const reactivateButton = button => {
+	button.style.pointerevents = 'auto';
+}
+
+
+const sendAttack = (attackName, button) => {
 	let formData = new FormData();
 	formData.append("skill-name", attackName);
 	fetch("phpProcessing/sendAttack.php", {
@@ -31,26 +36,25 @@ const sendAttack = attackName => {
 		credentials: 'include',
 		body: formData
 	});
+	button.style.pointerevents = 'none';
+	setTimeout( ()=> reactivateButton(button), 2000);
 }
 
-const initEventListeners = () => {
+const initEventListeners = zelda => {
+	let buttonNormal = document.getElementById("attack1");
+	let buttonSpecial1 = document.getElementById("attack2");
+	let buttonSpecial2 = document.getElementById("attack2");
 
-	document.getElementById("attack1").onclick = () => {
-		//Normal
-		console.log("Normal attack");
-		sendAttack("Normal");
+	buttonNormal.onclick = () => {
+		sendAttack("Normal", buttonNormal);
+		zelda.basicSpell();
+		setTimeout(zelda.battlePose, 1000);
 	}
-
-	document.getElementById("attack2").onclick = () => {
-		//Special1
-		console.log("Special1 attack");
-		sendAttack("Special1");
+	buttonSpecial1.onclick = () => {
+		sendAttack("Special1",buttonSpecial1 );
 	}
-
-	document.getElementById("attack3").onclick = () => {
-		//Special2
-		console.log("Special2 attack");
-		sendAttack("Special2");
+	buttonSpecial2.onclick = () => {
+		sendAttack("Special2", buttonSpecial2);
 	}
 }
 
