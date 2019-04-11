@@ -10,11 +10,6 @@
 
 	require_once("partial/header.php");
 ?>
-
-	<div id="testBox">
-		<p>Welcome to the lobby</p>
-	</div>
-
 	<div id="gamesListContainer">
 
 	</div>

@@ -1,12 +1,19 @@
 class Zelda {
 
-	constructor(musicManager) {
+	constructor(musicManager, canvas, context) {
 		this.battlePose();
 		this.musicManager = musicManager;
+		this.canvas = canvas;
+		this.context = context;
+		this.wiseSpirit = new Athos(canvas, context);
+		this.isSummonActive = false;
 	}
 
 	tick(){
-
+		this.sprite.tick(this.canvas.width /2, 3*this.canvas.height/4 , this.context);
+		if (this.isSummonActive) {
+			this.wiseSpirit.tick();
+		}
 	}
 
 	battlePose() {
@@ -44,12 +51,16 @@ class Zelda {
 		this.sprite.changeMinMaxInterval(1, columnCount);
 	}
 
-	attackSpecial1() {
+	summonSpirit() {
+		this.wiseSpirit.summon();
+		this.isSummonActive = true;
+		setTimeout(()=> this.unsummonSpirit(this),1000)
 
 	}
 
-	attackSpecial2() {
-
+	unsummonSpirit(zelda){
+		zelda.wiseSpirit.unsummon();
+		zelda.isSummonActive = false;
 	}
 
 }

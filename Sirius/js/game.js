@@ -10,12 +10,11 @@ window.onload = () => {
 		context.drawImage(background,0,0);
 	}
 	background.src = "images/background_inside_castle.jpg";
-	let zelda = new Zelda(musicManager);
-	let athos = new Athos();
+	let zelda = new Zelda(musicManager, canvas, context);
+	let elderOne = new ElderOne(musicManager, canvas, context);
 	initEventListeners(zelda);
-	tick(canvas, context, background, zelda, athos);
+	tick( background, context, zelda, elderOne);
 }
-
 const generateCanvas = () => {
 	let canvas = document.createElement('canvas');
 	canvas.width = window.innerWidth;
@@ -57,12 +56,13 @@ const initEventListeners = zelda => {
 		setTimeout(()=> battlePose(zelda), 700);
 	}
 	buttonSpecial1.onclick = () => {
-		//sendAttack("Special1",buttonSpecial1 );
+		sendAttack("Special1",buttonSpecial1 );
 		zelda.tookDamage();
 		setTimeout(()=> battlePose(zelda), 800);
 	}
 	buttonSpecial2.onclick = () => {
-		//sendAttack("Special2", buttonSpecial2);
+		sendAttack("Special2", buttonSpecial2);
+		zelda.summonSpirit();
 	}
 }
 
@@ -94,9 +94,9 @@ const showGameState = () => {
 	});
 }
 
-const tick = (canvas, context, background, zelda, athos) => {
+const tick = ( background, context, zelda, elderOne) => {
 	context.drawImage(background,0,0);
-	zelda.sprite.tick(canvas.width /2, 3*canvas.height/4 , context);
-	athos.sprite.tick(canvas.width /2, canvas.height/5 , context)
-	window.requestAnimationFrame(()=> tick(canvas,context,background,zelda, athos))
+	zelda.tick();
+	elderOne.tick();
+	window.requestAnimationFrame(()=> tick(background, context, zelda, elderOne));
 }

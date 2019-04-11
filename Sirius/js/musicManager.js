@@ -28,12 +28,14 @@ class MusicManager {
 	playFallen() {
 		let fallen = new Audio(this.fallenPath)
 		fallen.loop = true;
+		fallen.volume = 0.2;
 		fallen.play();
 	}
 
 	playCourage() {
 		let courage = new Audio(this.couragePath)
 		courage.loop = true;
+		courage.volume = 0.2;
 		courage.play();
 	}
 
