@@ -2,10 +2,9 @@ window.onload = () => {
 	let stateJSON, postFetch;
 	let musicManager = new MusicManager();
 	musicManager.playNightmare();
-
-	let canvas = generateCanvas();
+	let canvas = document.querySelector("canvas");
 	let context = canvas.getContext("2d");
-	let background = new Image(window.innerWidth,window.innerHeight);
+	let background = new Image();
 	background.onload = () => {
 		context.drawImage(background,0,0);
 	}
@@ -15,14 +14,6 @@ window.onload = () => {
 	setTimeout(()=>fetchGameState(zelda,ganon),2000);
 	initEventListeners(zelda,ganon);
 	tick( background, context, zelda, ganon);
-}
-const generateCanvas = () => {
-	let canvas = document.createElement('canvas');
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
-	canvas.style.zIndex = -1;
-	document.getElementById("canvasContainer").appendChild(canvas)
-	return canvas;
 }
 
 const reactivateButton = button => {
@@ -46,8 +37,7 @@ const initEventListeners = (zelda,ganon) => {
 	let buttonSpecial1 = document.getElementById("attack2");
 	let buttonSpecial2 = document.getElementById("attack3");
 
-	buttonNormal.onclick = () => {
-		//buttonNormal.style.pointerevents = 'none';
+	buttonNormal.onclick = () => {;
 		sendAttack("Normal", buttonNormal);
 		zelda.basicSpell();
 		setTimeout(()=> zelda.battlePose(), 700);
@@ -90,6 +80,8 @@ const fetchGameState = (zelda,ganon) => {
 }
 
 const tick = ( background, context, zelda, ganon) => {
+	context.canvas.width = innerWidth;
+	context.canvas.height = window.innerHeight;
 	context.drawImage(background,0,0);
 	zelda.tick();
 	ganon.tick();

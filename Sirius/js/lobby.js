@@ -23,7 +23,6 @@ window.onload = () => {
 
 const setClickListener = (node,id) => {
 	node.onclick = () => {
-		console.log("clicker sur node où id ="+id);
 		let formData = new FormData();
 		formData.append("id", id);
 		fetch("phpProcessing/joinGame.php", {
