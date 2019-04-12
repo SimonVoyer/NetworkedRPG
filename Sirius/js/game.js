@@ -2,7 +2,7 @@ window.onload = () => {
 	let stateJSON, postFetch;
 	let musicManager = new MusicManager();
 	musicManager.playNightmare();
-	setTimeout(fetchGameState,2000);
+
 	let canvas = generateCanvas();
 	let context = canvas.getContext("2d");
 	let background = new Image(window.innerWidth,window.innerHeight);
@@ -12,7 +12,8 @@ window.onload = () => {
 	background.src = "images/background_inside_castle.jpg";
 	let zelda = new Zelda(musicManager, canvas, context);
 	let ganon = new Ganon(musicManager, canvas, context);
-	initEventListeners(zelda,ganon); //ganon temporaire
+	setTimeout(()=>fetchGameState(zelda,ganon),2000);
+	initEventListeners(zelda,ganon);
 	tick( background, context, zelda, ganon);
 }
 const generateCanvas = () => {
@@ -67,32 +68,25 @@ const initEventListeners = (zelda,ganon) => {
 	}
 }
 
-const fetchGameState = () => {
+const stateDispatcher = (ganon,zelda) => {
+	if (stateJSON.game.attacked){
+		setTimeout(()=> zelda.tookDamage(),300)
+		ganon.attack();
+	}
+}
+
+
+const fetchGameState = (zelda,ganon) => {
 	fetch("phpProcessing/gameState.php")
 		.then(response => response.json())
 		.then(data => {
 			postFetch = new Date();
 			stateJSON = data;
-			showGameState(); //****debug
-			setTimeout(fetchGameState, 2000);
+			console.log(JSON.stringify(data));
+			stateDispatcher(ganon,zelda);
+			setTimeout(()=>fetchGameState(zelda,ganon), 2000);
 		}
 	);
-}
-
-const showGameState = () => {
-	let node = document.getElementById("JSONViewer");
-	clearChildren(node);
-	let gameState = stateJSON.game;
-	let playerState = stateJSON.player;
-	let othersState = stateJSON.other_players;
-	let gameName = document.createTextNode("game name: " + gameState.name);
-	node.appendChild(gameName);
-	let player = document.createTextNode(" ||| player name: " + playerState.name + "--- hp: " + playerState.hp )
-	node.appendChild(player);
-	othersState.forEach(otherPlayer => {
-		let otherNode = document.createTextNode("||| other name: " + otherPlayer.name + "--- hp: " + otherPlayer.hp )
-		node.appendChild(otherNode);
-	});
 }
 
 const tick = ( background, context, zelda, ganon) => {

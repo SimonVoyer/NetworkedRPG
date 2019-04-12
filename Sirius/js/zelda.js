@@ -37,6 +37,7 @@ class Zelda {
 		this.sprite = new TiledImage("images/zelda_sprites_damage.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
 		this.sprite.changeRow(0);
 		this.sprite.changeMinMaxInterval(1, columnCount);
+		setTimeout(() => this.battlePose(), 800);
 	}
 
 	basicSpell() {

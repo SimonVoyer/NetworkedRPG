@@ -16,8 +16,6 @@
 	<div class="attackButton" id="attack3"></div>
 </div>
 
-<div id = "JSONViewer"></div>
-
 
 <?php
 	require_once("partial/footer.php");
