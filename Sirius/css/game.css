@@ -57,6 +57,9 @@ html {
 	z-index: 5;
 	width: 150px;
 	height: 156px;
+	position: absolute;
+	top: 0.5vh;
+	left: 0.5vw;
 }
 
 #portraitContainer {

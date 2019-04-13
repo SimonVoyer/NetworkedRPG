@@ -11,9 +11,7 @@ class Zelda {
 
 	tick(){
 		this.sprite.tick(this.canvas.width /2, 3*this.canvas.height/4 , this.context);
-		if (this.isSummonActive) {
-			this.wiseSpirit.tick();
-		}
+		this.wiseSpirit.tick();
 	}
 
 	battlePose() {
@@ -53,15 +51,9 @@ class Zelda {
 	}
 
 	summonSpirit() {
+		this.musicManager.playSpiritCast();
 		this.wiseSpirit.summon();
-		this.isSummonActive = true;
-		setTimeout(()=> this.unsummonSpirit(this),1000)
 
-	}
-
-	unsummonSpirit(zelda){
-		zelda.wiseSpirit.unsummon();
-		zelda.isSummonActive = false;
 	}
 
 	startJump() {

@@ -11,6 +11,7 @@ class MusicManager {
 		this.spell2Path = "audio/zelda_sounds/zelda_spell2.mp3"
 		this.fallingPath = "audio/zelda_sounds/zelda_falling.mp3"
 		this.ganonAttackPath = "audio/ganon_sounds/ganon_attack.mp3"
+		this.spiritCastPath = "audio/zelda_sounds/wise_spirit_casting.mp3"
 	}
 
 	playLullaby() {
@@ -68,5 +69,11 @@ class MusicManager {
 		let ganonAttack = new Audio(this.ganonAttackPath)
 		ganonAttack.loop = false;
 		ganonAttack.play();
+	}
+
+	playSpiritCast() {
+		let spiritCast = new Audio(this.spiritCastPath)
+		spiritCast.loop = false;
+		spiritCast.play();
 	}
 }

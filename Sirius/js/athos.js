@@ -3,37 +3,50 @@ class Athos {
 	constructor(canvas, context) {
 		this.canvas = canvas;
 		this.context = context;
-		let columnCount = 11;
-		let rowCount = 2;
-		let refreshDelay = 100;
-		let loopColumns = true;
-		let scale = 5.0;
-		this.sprite = new TiledImage("images/athos_sprites_normalized.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
-		this.changeSpriteRow(1);
-		this.changeSpriteInterval(1, columnCount);
-		this.sprite.setFlipped(true);
+		this.isSummoned = false;
+
 	}
 
 	tick(){
-		this.sprite.tick(this.canvas.width /2, this.canvas.height/5 , this.context)
-	}
-
-	changeSpriteRow(row){
-		this.sprite.changeRow(row);
-	}
-
-	changeSpriteInterval(min,max){
-		this.sprite.changeMinMaxInterval(min, max);
+		if(this.isSummoned){
+			this.sprite.tick(this.canvas.width *3/7, this.canvas.height*3/7 , this.context);
+		}
 	}
 
 	summon() {
-		this.changeSpriteRow(0);
-		this.sprite.changeCol(0);
-		this.changeSpriteInterval(1, 11);
+		this.isSummoned = true;
+		setTimeout(() => this.cast(), 300);
+		setTimeout(()=>this.unsummon(), 2500);
+		this.prepareToCast();
+	}
+
+	prepareToCast() {
+		let columnCount = 5;
+		let rowCount = 1;
+		let refreshDelay = 100;
+		let loopColumns = true;
+		let scale = 5.0;
+		this.sprite = new TiledImage("images/athos_sprites_preparation.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
+		this.sprite.changeRow(0);
+		this.sprite.changeMinMaxInterval(1, columnCount);
+		this.sprite.setFlipped(true);
+	}
+
+	cast() {
+		let columnCount = 4;
+		let rowCount = 1;
+		let refreshDelay = 100;
+		let loopColumns = true;
+		let scale = 5.0;
+		this.sprite = new TiledImage("images/athos_sprites_casting.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
+		this.sprite.changeRow(0);
+		this.sprite.changeMinMaxInterval(1, columnCount);
+		this.sprite.setFlipped(true);
 	}
 
 	unsummon() {
-		this.changeSpriteRow(1);
+		this.isSummoned = false;
+		this.sprite = null;
 	}
 
 }

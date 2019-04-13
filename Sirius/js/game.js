@@ -1,3 +1,7 @@
+let isButtonActive = true;
+let isVictorious = false;
+let isDefeated = false;
+
 window.onload = () => {
 	let stateJSON, postFetch;
 	let musicManager = new MusicManager();
@@ -12,16 +16,22 @@ window.onload = () => {
 	let zelda = new Zelda(musicManager, canvas, context);
 	let ganon = new Ganon(musicManager, canvas, context);
 	setTimeout(()=>fetchGameState(zelda,ganon),2000);
-	initEventListeners(zelda,ganon);
+	initEventListeners(zelda);
 	tick( background, context, zelda, ganon);
 }
 
-const reactivateButton = button => {
-	button.style.pointerevents = 'auto';
+
+
+const reactivateButtons = () => {
+	isButtonActive = true;
 }
 
+const deactivateButtons = () => {
+	isButtonActive = false;
+	setTimeout(reactivateButtons, 2000);
+}
 
-const sendAttack = (attackName, button) => {
+const sendAttack = (attackName) => {
 	let formData = new FormData();
 	formData.append("skill-name", attackName);
 	fetch("phpProcessing/sendAttack.php", {
@@ -29,42 +39,50 @@ const sendAttack = (attackName, button) => {
 		credentials: 'include',
 		body: formData
 	});
-	setTimeout( ()=> reactivateButton(button), 2000);
 }
 
-const initEventListeners = (zelda,ganon) => {
+const initEventListeners = (zelda) => {
 	let buttonNormal = document.getElementById("attack1");
 	let buttonSpecial1 = document.getElementById("attack2");
 	let buttonSpecial2 = document.getElementById("attack3");
 
-	buttonNormal.onclick = () => {;
-		sendAttack("Normal", buttonNormal);
-		zelda.basicSpell();
-		setTimeout(()=> zelda.battlePose(), 700);
+	buttonNormal.onclick = () => {
+		if (isButtonActive){
+			deactivateButtons();
+			sendAttack("Normal", buttonNormal);
+			zelda.basicSpell();
+			setTimeout(()=> zelda.battlePose(), 700);
+		}
 	}
 
 	buttonSpecial1.onclick = () => {
-		sendAttack("Special1",buttonSpecial1 );
-		setTimeout(()=> zelda.hover(),300);
-		setTimeout(()=> zelda.land(),2000)
-		setTimeout(()=> zelda.battlePose(), 2200);
-		zelda.startJump();
+		if (isButtonActive) {
+			deactivateButtons();
+			sendAttack("Special1",buttonSpecial1 );
+			setTimeout(()=> zelda.hover(),300);
+			setTimeout(()=> zelda.land(),2000)
+			setTimeout(()=> zelda.battlePose(), 2200);
+			zelda.startJump();
+		}
 	}
 
 	buttonSpecial2.onclick = () => {
-		sendAttack("Special2", buttonSpecial2);
-		zelda.summonSpirit();
-		ganon.attack();
+		if (isButtonActive){
+			deactivateButtons();
+			sendAttack("Special2", buttonSpecial2);
+			zelda.summonSpirit();
+		}
 	}
 }
 
 const stateDispatcher = (ganon,zelda) => {
-	if (stateJSON.game.attacked){
+	isVictorious = /WIN/.test(stateJSON);
+	isDefeated =  /LOST/.test(stateJSON);
+	if (stateJSON.game.attacked === true){
 		setTimeout(()=> zelda.tookDamage(),300)
 		ganon.attack();
-	}
 }
-
+}
 
 const fetchGameState = (zelda,ganon) => {
 	fetch("phpProcessing/gameState.php")
@@ -80,6 +98,11 @@ const fetchGameState = (zelda,ganon) => {
 }
 
 const tick = ( background, context, zelda, ganon) => {
+	if (isVictorious) {
+		window.location.href = "victory.php";
+	} else if (isDefeated) {
+		window.location.href = "defeat.php";
+	}
 	context.canvas.width = innerWidth;
 	context.canvas.height = window.innerHeight;
 	context.drawImage(background,0,0);
