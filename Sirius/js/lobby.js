@@ -11,8 +11,24 @@ window.onload = () => {
 			  let node = document.createElement("div");
 			  node.setAttribute("class", "availableGame");
 			  setClickListener(node,gameJSON.id);
-			  let textNode = document.createTextNode(gameJSON.name);
-		      node.appendChild(textNode);
+			  let br = document.createElement("br");
+			  let textNodeName = document.createTextNode(gameJSON.name);
+			  let textNodeHP = document.createTextNode(gameJSON.hp);
+			  let textNodeType = document.createTextNode(gameJSON.type);
+			  let playerCount = gameJSON.nb + " / " + gameJSON.max_users;
+			  let textNodeNB = document.createTextNode(playerCount);
+			  let expCount  = "Experience: "+ gameJSON.exp;
+			  let textNodeEXP = document.createTextNode(expCount);
+			  node.appendChild(textNodeName);
+			  node.appendChild(br);
+			  node.appendChild(textNodeHP);
+			  node.appendChild(br);
+			  node.appendChild(textNodeType);
+			  node.appendChild(br);
+			  node.appendChild(textNodeNB);
+			  node.appendChild(br);
+			  node.appendChild(textNodeEXP);
+			  node.appendChild(br);
 			  container.appendChild(node);
 		  });
 	  }),

@@ -94,7 +94,7 @@ class Zelda {
 		this.musicManager.playDown();
 		let columnCount = 10;
 		let rowCount = 1;
-		let refreshDelay = 3000;
+		let refreshDelay = 100;
 		let loopColumns = true;
 		let scale = 3.0;
 		this.sprite = new TiledImage("images/zelda_sprites_falling.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
@@ -106,7 +106,7 @@ class Zelda {
 	passedOut() {
 		let columnCount = 4;
 		let rowCount = 1;
-		let refreshDelay = 100;
+		let refreshDelay = 3000;
 		let loopColumns = true;
 		let scale = 3.0;
 		this.sprite = new TiledImage("images/zelda_sprites_down.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
