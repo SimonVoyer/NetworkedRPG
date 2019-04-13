@@ -7,9 +7,10 @@
 	$action = new DefeatAction();
 	$action->execute();
 
-
 	require_once("partial/header.php");
 ?>
-u ded
+
+<div id="backgroundContainer"></div>
+
 <?php
 	require_once("partial/footer.php");

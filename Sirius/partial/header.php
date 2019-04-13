@@ -26,6 +26,16 @@
 				<script src="js/athos.js"></script>
 				<script src="js/ganon.js"></script>
 			<?php
+		} else if (preg_match("/victory.php/", $_SERVER["PHP_SELF"]) === 1){
+			?>
+				<link rel="stylesheet" type="text/css" media="screen" href="css/victory.css" />
+				<script src="js/victory.js"></script>
+			<?php
+		} else if (preg_match("/defeat.php/", $_SERVER["PHP_SELF"]) === 1){
+			?>
+				<link rel="stylesheet" type="text/css" media="screen" href="css/defeat.css" />
+				<script src="js/defeat.js"></script>
+			<?php
 		}
 	?>
 	<script src="js/utilities.js"></script>

@@ -6,7 +6,6 @@ class Zelda {
 		this.canvas = canvas;
 		this.context = context;
 		this.wiseSpirit = new Athos(canvas, context);
-		this.isSummonActive = false;
 	}
 
 	tick(){
@@ -90,6 +89,31 @@ class Zelda {
 		this.sprite.changeRow(0);
 		this.sprite.changeMinMaxInterval(1, columnCount);
 	}
+
+	down() {
+		this.musicManager.playDown();
+		let columnCount = 10;
+		let rowCount = 1;
+		let refreshDelay = 100;
+		let loopColumns = true;
+		let scale = 3.0;
+		this.sprite = new TiledImage("images/zelda_sprites_falling.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
+		this.sprite.changeRow(0);
+		this.sprite.changeMinMaxInterval(1, columnCount);
+		setTimeout(()=>this.passedOut(),500)
+	}
+
+	passedOut() {
+		let columnCount = 4;
+		let rowCount = 1;
+		let refreshDelay = 100;
+		let loopColumns = true;
+		let scale = 3.0;
+		this.sprite = new TiledImage("images/zelda_sprites_down.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
+		this.sprite.changeRow(0);
+		this.sprite.changeMinMaxInterval(1, columnCount);
+	}
+
 
 
 }

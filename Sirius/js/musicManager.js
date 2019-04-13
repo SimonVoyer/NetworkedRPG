@@ -12,6 +12,7 @@ class MusicManager {
 		this.fallingPath = "audio/zelda_sounds/zelda_falling.mp3"
 		this.ganonAttackPath = "audio/ganon_sounds/ganon_attack.mp3"
 		this.spiritCastPath = "audio/zelda_sounds/wise_spirit_casting.mp3"
+		this.doomPath = "audio/Ilgynoth_the _heart_of_Corruption.mp3"
 	}
 
 	playLullaby() {
@@ -76,4 +77,18 @@ class MusicManager {
 		spiritCast.loop = false;
 		spiritCast.play();
 	}
+
+	playDown() {
+		let down = new Audio(this.fallingPath)
+		down.loop = false;
+		down.play();
+	}
+
+	playDoom() {
+		let doom = new Audio(this.doomPath)
+		doom.loop = false;
+		doom.play();
+	}
+
+
 }

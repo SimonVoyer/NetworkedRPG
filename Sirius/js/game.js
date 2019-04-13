@@ -81,6 +81,8 @@ const stateDispatcher = (ganon,zelda) => {
 	if (stateJSON.game.attacked === true){
 		setTimeout(()=> zelda.tookDamage(),300)
 		ganon.attack();
+
+
 }
 }
 
@@ -97,12 +99,21 @@ const fetchGameState = (zelda,ganon) => {
 	);
 }
 
+const defeated = ()=>{
+	window.location.href = "defeat.php";
+}
+
+
 const tick = ( background, context, zelda, ganon) => {
 	if (isVictorious) {
 		window.location.href = "victory.php";
 	} else if (isDefeated) {
-		window.location.href = "defeat.php";
+		isDefeated = false;
+		ganon.attack();
+		zelda.down();
+		setTimeout( ()=> defeated(), 2000);
 	}
+
 	context.canvas.width = innerWidth;
 	context.canvas.height = window.innerHeight;
 	context.drawImage(background,0,0);

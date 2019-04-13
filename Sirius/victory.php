@@ -6,10 +6,10 @@
 	require_once("action/VictoryAction.php");
 	$action = new VictoryAction();
 	$action->execute();
-
-
 	require_once("partial/header.php");
 ?>
-u win
+
+<video src="video/zelda_victory.mp4" autoplay></video>
+
 <?php
 	require_once("partial/footer.php");

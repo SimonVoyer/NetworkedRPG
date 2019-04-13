@@ -1,0 +1,10 @@
+#backgroundContainer{
+	width: 100vw;
+	height: 100vh;
+	background-image: url("../images/background_moon.jpg");
+	background-size: 100vw 100vh;
+}
+
+body, html{
+	margin:0;
+}

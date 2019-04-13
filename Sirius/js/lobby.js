@@ -19,8 +19,6 @@ window.onload = () => {
 	  2000);
 }
 
-
-
 const setClickListener = (node,id) => {
 	node.onclick = () => {
 		let formData = new FormData();
