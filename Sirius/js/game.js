@@ -14,10 +14,12 @@ window.onload = () => {
 	}
 	background.src = "images/background_inside_castle.jpg";
 	let zelda = new Zelda(musicManager, canvas, context);
+	let allies = [new Allies(1, musicManager, canvas, context)]
 	let ganon = new Ganon(musicManager, canvas, context);
+
 	setTimeout(()=>fetchGameState(zelda,ganon),2000);
 	initEventListeners(zelda);
-	tick( background, context, zelda, ganon);
+	tick( background, context, zelda, ganon, allies);
 }
 
 
@@ -76,14 +78,14 @@ const initEventListeners = (zelda) => {
 }
 
 const stateDispatcher = (ganon,zelda) => {
+	//console.log(stateJSON.other_players.length); //fonctionne
+
 	isVictorious = /WIN/.test(stateJSON);
 	isDefeated =  /LOST/.test(stateJSON);
 	if (stateJSON.game.attacked === true){
 		setTimeout(()=> zelda.tookDamage(),300)
 		ganon.attack();
-
-
-}
+	}
 }
 
 const fetchGameState = (zelda,ganon) => {
@@ -104,7 +106,7 @@ const defeated = ()=>{
 }
 
 
-const tick = ( background, context, zelda, ganon) => {
+const tick = ( background, context, zelda, ganon, allies) => {
 	if (isVictorious) {
 		window.location.href = "victory.php";
 	} else if (isDefeated) {
@@ -114,10 +116,13 @@ const tick = ( background, context, zelda, ganon) => {
 		setTimeout( ()=> defeated(), 2000);
 	}
 
-	context.canvas.width = innerWidth;
+	context.canvas.width = window.innerWidth;
 	context.canvas.height = window.innerHeight;
 	context.drawImage(background,0,0);
 	zelda.tick();
 	ganon.tick();
-	window.requestAnimationFrame(()=> tick(background, context, zelda, ganon));
+	allies.forEach(mage => {
+		mage.tick();
+	});
+	window.requestAnimationFrame(()=> tick(background, context, zelda, ganon, allies));
 }

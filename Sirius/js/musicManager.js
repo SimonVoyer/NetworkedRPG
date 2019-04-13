@@ -75,6 +75,7 @@ class MusicManager {
 	playSpiritCast() {
 		let spiritCast = new Audio(this.spiritCastPath)
 		spiritCast.loop = false;
+		spiritCast.volume = 0.5;
 		spiritCast.play();
 	}
 

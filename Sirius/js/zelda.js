@@ -9,7 +9,7 @@ class Zelda {
 	}
 
 	tick(){
-		this.sprite.tick(this.canvas.width /2, 3*this.canvas.height/4 , this.context);
+		this.sprite.tick(this.canvas.width /3, window.innerHeight , this.context);
 		this.wiseSpirit.tick();
 	}
 

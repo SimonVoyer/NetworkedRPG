@@ -8,7 +8,7 @@ class Ganon {
 	}
 
 	tick() {
-		this.sprite.tick(this.canvas.width * 3/4, this.canvas.height * 3/4 , this.context);
+		this.sprite.tick(this.canvas.width * 7/10, window.innerHeight , this.context);
 	}
 
 	battlePose() {

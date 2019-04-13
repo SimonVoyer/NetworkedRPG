@@ -1,6 +1,14 @@
-
 body{
 	width: 100vw;
 	height: 100vh;
 	background-image: url("../images/background_master_sword.jpg");
+	position: relative;
+}
+
+#crest {
+	position: absolute;
+	width: 500px;
+	height: 298px;
+	background-image: url("../images/zelda_crest_500x298.png");
+	left: 37vw;
 }

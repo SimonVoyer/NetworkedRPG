@@ -8,8 +8,10 @@ class Athos {
 	}
 
 	tick(){
+		this.x = this.canvas.width *6/20;
+		this.y = this.canvas.height*4/5;
 		if(this.isSummoned){
-			this.sprite.tick(this.canvas.width *3/7, this.canvas.height*3/7 , this.context);
+			this.sprite.tick(this.x, this.y, this.context);
 		}
 	}
 

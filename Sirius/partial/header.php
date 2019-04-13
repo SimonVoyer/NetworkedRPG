@@ -11,6 +11,7 @@
 			?>
 				<link rel="stylesheet" type="text/css" media="screen" href="css/connection.css" />
 				<script src="js/connection.js"></script>
+				<script src="js/crest.js"></script>
 			<?php
 		} else if (preg_match("/lobby.php/", $_SERVER["PHP_SELF"]) === 1){
 			?>
@@ -25,6 +26,7 @@
 				<script src="js/zelda.js"></script>
 				<script src="js/athos.js"></script>
 				<script src="js/ganon.js"></script>
+				<script src="js/allies.js"></script>
 			<?php
 		} else if (preg_match("/victory.php/", $_SERVER["PHP_SELF"]) === 1){
 			?>
