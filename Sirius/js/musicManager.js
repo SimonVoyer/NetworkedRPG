@@ -13,6 +13,7 @@ class MusicManager {
 		this.ganonAttackPath = "audio/ganon_sounds/ganon_attack.mp3"
 		this.spiritCastPath = "audio/zelda_sounds/wise_spirit_casting.mp3"
 		this.doomPath = "audio/Ilgynoth_the _heart_of_Corruption.mp3"
+		this.thunderPath = "audio/spawn_sfx.mp3"
 	}
 
 	playLullaby() {
@@ -89,6 +90,13 @@ class MusicManager {
 		let doom = new Audio(this.doomPath)
 		doom.loop = false;
 		doom.play();
+	}
+
+	playThunder(){
+		let thunder = new Audio(this.thunderPath)
+		thunder.loop = false;
+		thunder.volume = 0.1;
+		thunder.play();
 	}
 
 

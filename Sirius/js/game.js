@@ -14,7 +14,7 @@ window.onload = () => {
 	}
 	background.src = "images/background_inside_castle.jpg";
 	let zelda = new Zelda(musicManager, canvas, context);
-	let allies = [new Allies(1, musicManager, canvas, context)]
+	let allies = [new Allies(1, musicManager, canvas, context), new Allies(2, musicManager, canvas, context), ,new Allies(3, musicManager, canvas, context) ]
 	let ganon = new Ganon(musicManager, canvas, context);
 
 	setTimeout(()=>fetchGameState(zelda,ganon),2000);
