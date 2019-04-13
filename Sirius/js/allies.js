@@ -20,10 +20,10 @@ class Allies {
 			this.x = this.canvas.width /12;
 		}
 		this.spawn();
-		this.attack();
 	}
 
 	tick() {
+		this.y = window.innerHeight;
 		if (this.id == 1) {
 			this.x = this.canvas.width * 4.5/18;
 		} else if (this.id == 2) {
@@ -33,6 +33,8 @@ class Allies {
 		}
 		this.sprite.tick(this.x, this.y, this.context);
 	}
+
+
 
 	spawn() {
 		this.musicManager.playThunder();
@@ -47,10 +49,14 @@ class Allies {
 		setTimeout(()=>this.battleStance(), 500);
 	}
 
+	despawn() {
+		this.sprite = null;
+	}
+
 	battleStance1(){
 		let columnCount = 4;
 		let rowCount = 1;
-		let refreshDelay = 100;
+		let refreshDelay = 500;
 		let loopColumns = true;
 		let scale = 3.0;
 		this.sprite = new TiledImage("images/mage1_sprites_stance.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
@@ -112,14 +118,14 @@ class Allies {
 	attack3(){
 		let columnCount = 50;
 		let rowCount = 1;
-		let refreshDelay = 60;
+		let refreshDelay = 50;
 		let loopColumns = true;
 		let scale = 3.0;
 		this.sprite = new TiledImage("images/mage3_sprites_attack50.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
 		this.sprite.changeRow(0);
 		this.sprite.changeMinMaxInterval(1, columnCount);
 		this.sprite.setFlipped(true);
-		setTimeout(()=>this.battleStance(), 4000);
+		setTimeout(()=>this.battleStance(), 3000);
 	}
 
 

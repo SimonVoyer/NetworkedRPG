@@ -15,11 +15,11 @@ window.onload = () => {
 	background.src = "images/background_inside_castle.jpg";
 	let zelda = new Zelda(musicManager, canvas, context);
 	let allies = [new Allies(1, musicManager, canvas, context), new Allies(2, musicManager, canvas, context), ,new Allies(3, musicManager, canvas, context) ]
-	let ganon = new Ganon(musicManager, canvas, context);
+	let elderSpawn = new ElderSpawn(musicManager, canvas, context);
 
-	setTimeout(()=>fetchGameState(zelda,ganon),2000);
-	initEventListeners(zelda);
-	tick( background, context, zelda, ganon, allies);
+	setTimeout(()=>fetchGameState(zelda,elderSpawn),2000);
+	initEventListeners(zelda, elderSpawn);
+	tick( background, context, zelda, elderSpawn, allies);
 }
 
 
@@ -43,7 +43,7 @@ const sendAttack = (attackName) => {
 	});
 }
 
-const initEventListeners = (zelda) => {
+const initEventListeners = (zelda, elderSpawn) => {
 	let buttonNormal = document.getElementById("attack1");
 	let buttonSpecial1 = document.getElementById("attack2");
 	let buttonSpecial2 = document.getElementById("attack3");
@@ -54,6 +54,7 @@ const initEventListeners = (zelda) => {
 			sendAttack("Normal", buttonNormal);
 			zelda.basicSpell();
 			setTimeout(()=> zelda.battlePose(), 700);
+			setTimeout(()=> elderSpawn.tookDamage(), 350);
 		}
 	}
 
@@ -77,28 +78,32 @@ const initEventListeners = (zelda) => {
 	}
 }
 
-const stateDispatcher = (ganon,zelda) => {
+const stateDispatcher = (elderSpawn,zelda) => {
 	//console.log(stateJSON.other_players.length); //fonctionne
 
 	isVictorious = /WIN/.test(stateJSON);
 	isDefeated =  /LOST/.test(stateJSON);
 	if (stateJSON.game.attacked === true){
 		setTimeout(()=> zelda.tookDamage(),300)
-		ganon.attack();
+		elderSpawn.attack();
 	}
 }
 
-const fetchGameState = (zelda,ganon) => {
+const fetchGameState = (zelda,elderSpawn) => {
 	fetch("phpProcessing/gameState.php")
 		.then(response => response.json())
 		.then(data => {
 			postFetch = new Date();
 			stateJSON = data;
 			console.log(JSON.stringify(data));
-			stateDispatcher(ganon,zelda);
-			setTimeout(()=>fetchGameState(zelda,ganon), 2000);
+			stateDispatcher(elderSpawn,zelda);
+			setTimeout(()=>fetchGameState(zelda,elderSpawn), 2000);
 		}
 	);
+}
+
+const victorious = () => {
+	window.location.href = "victory.php";
 }
 
 const defeated = ()=>{
@@ -106,12 +111,13 @@ const defeated = ()=>{
 }
 
 
-const tick = ( background, context, zelda, ganon, allies) => {
+const tick = ( background, context, zelda, elderSpawn, allies) => {
 	if (isVictorious) {
-		window.location.href = "victory.php";
+		setTimeout( ()=> victorious(), 7000);
+		elderSpawn.banished();
 	} else if (isDefeated) {
 		isDefeated = false;
-		ganon.attack();
+		elderSpawn.attack();
 		zelda.down();
 		setTimeout( ()=> defeated(), 2000);
 	}
@@ -120,9 +126,9 @@ const tick = ( background, context, zelda, ganon, allies) => {
 	context.canvas.height = window.innerHeight;
 	context.drawImage(background,0,0);
 	zelda.tick();
-	ganon.tick();
+	elderSpawn.tick();
 	allies.forEach(mage => {
 		mage.tick();
 	});
-	window.requestAnimationFrame(()=> tick(background, context, zelda, ganon, allies));
+	window.requestAnimationFrame(()=> tick(background, context, zelda, elderSpawn, allies));
 }

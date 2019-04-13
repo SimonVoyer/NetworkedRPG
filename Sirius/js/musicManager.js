@@ -1,25 +1,19 @@
 class MusicManager {
 
 	constructor() {
-		this.couragePath = "audio/Zelda Main Theme Song.mp3"
-		this.lullabyPath =  "audio/Hollow Knight OST - Shade Theme.mp3"
-		this.nightmarePath = "audio/The Troupe Master (Grimm + Nightmare King) - Hollow Knight The Grimm Troupe DLC OST.mp3"
-		this.fallenPath = "audio/hyrule-castle-the-legend-of-zelda-breath-of-the-wild-ost.mp3"
-		this.masterSwordPath = "audio/Master Sword - The Legend of Zelda Ocarina of Time.mp3"
-		this.damagePath = "audio/zelda_sounds/zelda_damage.mp3"
-		this.spellPath = "audio/zelda_sounds/zelda_spell.mp3"
-		this.spell2Path = "audio/zelda_sounds/zelda_spell2.mp3"
-		this.fallingPath = "audio/zelda_sounds/zelda_falling.mp3"
-		this.ganonAttackPath = "audio/ganon_sounds/ganon_attack.mp3"
-		this.spiritCastPath = "audio/zelda_sounds/wise_spirit_casting.mp3"
-		this.doomPath = "audio/Ilgynoth_the _heart_of_Corruption.mp3"
-		this.thunderPath = "audio/spawn_sfx.mp3"
-	}
-
-	playLullaby() {
-		let lullaby = new Audio(this.lullabyPath);
-		lullaby.loop = true;
-		lullaby.play();
+		this.couragePath = "audio/Zelda Main Theme Song.mp3";
+		this.nightmarePath = "audio/The Troupe Master (Grimm + Nightmare King) - Hollow Knight The Grimm Troupe DLC OST.mp3";
+		this.fallenPath = "audio/hyrule-castle-the-legend-of-zelda-breath-of-the-wild-ost.mp3";
+		this.masterSwordPath = "audio/Master Sword - The Legend of Zelda Ocarina of Time.mp3";
+		this.damagePath = "audio/zelda_sounds/zelda_damage.mp3";
+		this.spellPath = "audio/zelda_sounds/zelda_spell.mp3";
+		this.spell2Path = "audio/zelda_sounds/zelda_spell2.mp3";
+		this.fallingPath = "audio/zelda_sounds/zelda_falling.mp3";
+		this.demonAttackPath = "audio/demon_sounds/demon_attack.mp3";
+		this.demonBanished = "audio/demon_sounds/demon_banished.mp3";
+		this.spiritCastPath = "audio/zelda_sounds/wise_spirit_casting.mp3";
+		this.doomPath = "audio/Ilgynoth_the _heart_of_Corruption.mp3";
+		this.thunderPath = "audio/spawn_sfx.mp3";
 	}
 
 	playNightmare() {
@@ -67,10 +61,10 @@ class MusicManager {
 		spell2.play();
 	}
 
-	playGanonAttack(){
-		let ganonAttack = new Audio(this.ganonAttackPath)
-		ganonAttack.loop = false;
-		ganonAttack.play();
+	playDemonAttack(){
+		let demonAttack = new Audio(this.demonAttackPath)
+		demonAttack.loop = false;
+		demonAttack.play();
 	}
 
 	playSpiritCast() {
@@ -92,11 +86,18 @@ class MusicManager {
 		doom.play();
 	}
 
-	playThunder(){
+	playThunder() {
 		let thunder = new Audio(this.thunderPath)
 		thunder.loop = false;
 		thunder.volume = 0.1;
 		thunder.play();
+	}
+
+	playDemonBanished() {
+		let demonBanished = new Audio(this.demonBanishedPath)
+		demonBanished.loop = false;
+		//demonBanished.volume = 0.1;
+		demonBanished.play();
 	}
 
 

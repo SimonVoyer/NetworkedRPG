@@ -25,7 +25,7 @@
 				<script src="js/game.js"></script>
 				<script src="js/zelda.js"></script>
 				<script src="js/athos.js"></script>
-				<script src="js/ganon.js"></script>
+				<script src="js/elderSpawn.js"></script>
 				<script src="js/allies.js"></script>
 			<?php
 		} else if (preg_match("/victory.php/", $_SERVER["PHP_SELF"]) === 1){
