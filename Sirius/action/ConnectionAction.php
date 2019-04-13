@@ -23,7 +23,7 @@
 				$serverResponse = $this->callAPI("signin", $data);
 				if (preg_match('/_/', $serverResponse) === 0) {
 					$_SESSION["key"] = $serverResponse;
-					$_COOKIE["username"] = $_POST["username"];
+					$_SESSION["username"] = $_POST["username"];
 					$this->isConnected = true;
 					$_SESSION["visibility"] = CommonAction::$VISIBILITY_MEMBER;
 					header("location:lobby.php");

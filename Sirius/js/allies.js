@@ -31,7 +31,9 @@ class Allies {
 		} else if (this.id == 3) {
 			this.x = this.canvas.width * 0.8/9;
 		}
-		this.sprite.tick(this.x, this.y, this.context);
+		if(this.sprite != null)	{
+			this.sprite.tick(this.x, this.y, this.context);
+		}
 	}
 
 

@@ -12,9 +12,22 @@
 ?>
 
 	<form action="connection.php" method="post">
-		<div class = "input">
-			username: <input type="text" name="username" id="username_input">
-		</div>
+	<?php
+		if (isset($_SESSION["username"])) {
+			?>
+			<div class = "input">
+				username: <input type="text" name="username" id="username_input" value=<?=$_SESSION["username"]  ?> >
+			</div>
+		<?php
+		} else {
+			?>
+			<div class = "input">
+				username: <input type="text" name="username" id="username_input">
+			</div>
+			<?php
+		}
+	?>
+
 		<div class = "input">
 			password: <input type="password" name="password" id="password_input">
 		</div>

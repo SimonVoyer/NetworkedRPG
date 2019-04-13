@@ -1,7 +1,7 @@
 let isButtonActive = true;
 let isVictorious = false;
 let isDefeated = false;
-
+let allyCount = 0;
 window.onload = () => {
 	let stateJSON, postFetch;
 	let musicManager = new MusicManager();
@@ -66,6 +66,7 @@ const initEventListeners = (zelda, elderSpawn) => {
 			setTimeout(()=> zelda.land(),2000)
 			setTimeout(()=> zelda.battlePose(), 2200);
 			zelda.startJump();
+			setTimeout(()=> elderSpawn.tookDamage(), 2000);
 		}
 	}
 
@@ -74,15 +75,16 @@ const initEventListeners = (zelda, elderSpawn) => {
 			deactivateButtons();
 			sendAttack("Special2", buttonSpecial2);
 			zelda.summonSpirit();
+			setTimeout(()=> elderSpawn.tookDamage(),2000);
 		}
 	}
 }
 
 const stateDispatcher = (elderSpawn,zelda) => {
-	//console.log(stateJSON.other_players.length); //fonctionne
-
 	isVictorious = /WIN/.test(stateJSON);
 	isDefeated =  /LOST/.test(stateJSON);
+	let refreshedAllyCount = stateJSON.other_players.length;
+	allyCount = stateJSON.other_players.length;
 	if (stateJSON.game.attacked === true){
 		setTimeout(()=> zelda.tookDamage(),300)
 		elderSpawn.attack();
@@ -113,8 +115,10 @@ const defeated = ()=>{
 
 const tick = ( background, context, zelda, elderSpawn, allies) => {
 	if (isVictorious) {
-		setTimeout( ()=> victorious(), 7000);
+		isVictorious = false;
+		elderSpawn.isAlive = false;
 		elderSpawn.banished();
+		setTimeout( ()=> victorious(), 3000);
 	} else if (isDefeated) {
 		isDefeated = false;
 		elderSpawn.attack();

@@ -10,7 +10,7 @@ class MusicManager {
 		this.spell2Path = "audio/zelda_sounds/zelda_spell2.mp3";
 		this.fallingPath = "audio/zelda_sounds/zelda_falling.mp3";
 		this.demonAttackPath = "audio/demon_sounds/demon_attack.mp3";
-		this.demonBanished = "audio/demon_sounds/demon_banished.mp3";
+		this.demonBanishedPath = "audio/demon_sounds/demon_defeated.mp3";
 		this.spiritCastPath = "audio/zelda_sounds/wise_spirit_casting.mp3";
 		this.doomPath = "audio/Ilgynoth_the _heart_of_Corruption.mp3";
 		this.thunderPath = "audio/spawn_sfx.mp3";
@@ -96,7 +96,6 @@ class MusicManager {
 	playDemonBanished() {
 		let demonBanished = new Audio(this.demonBanishedPath)
 		demonBanished.loop = false;
-		//demonBanished.volume = 0.1;
 		demonBanished.play();
 	}
 

@@ -1,14 +1,17 @@
 class ElderSpawn {
 
 	constructor(musicManager, canvas, context) {
-		this.battlePose();
 		this.musicManager = musicManager;
 		this.canvas = canvas;
 		this.context = context;
+		this.isAlive = true;
+		this.battlePose();
 	}
 
 	tick() {
-		this.sprite.tick(this.canvas.width * 7/10, window.innerHeight , this.context);
+		if(this.sprite != null)	{
+			this.sprite.tick(this.canvas.width * 7/10, window.innerHeight , this.context);
+		}
 	}
 
 	battlePose() {
@@ -37,15 +40,17 @@ class ElderSpawn {
 
 	tookDamage() {
 	//	this.musicManager.playDemonDamaged();
-		let columnCount = 7;
-		let rowCount = 1;
-		let refreshDelay = 180;
-		let loopColumns = true;
-		let scale = 3.0;
-		this.sprite = new TiledImage("images/demon_sprites_damaged.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
-		this.sprite.changeRow(0);
-		this.sprite.changeMinMaxInterval(0, columnCount);
-		setTimeout(() => this.battlePose(), 1100);
+		if (this.isAlive) {
+			let columnCount = 7;
+			let rowCount = 1;
+			let refreshDelay = 180;
+			let loopColumns = true;
+			let scale = 3.0;
+			this.sprite = new TiledImage("images/demon_sprites_damaged.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
+			this.sprite.changeRow(0);
+			this.sprite.changeMinMaxInterval(0, columnCount);
+			setTimeout(() => this.battlePose(), 1100);
+		}
 	}
 
 	banished(){
@@ -58,6 +63,11 @@ class ElderSpawn {
 		this.sprite = new TiledImage("images/demon_sprites_death.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
 		this.sprite.changeRow(0);
 		this.sprite.changeMinMaxInterval(0, columnCount);
+		setTimeout(()=>this.despawn(), 500);
+	}
+
+	despawn(){
+		this.sprite = null;
 	}
 
 }

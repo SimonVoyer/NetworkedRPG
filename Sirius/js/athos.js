@@ -3,14 +3,13 @@ class Athos {
 	constructor(canvas, context) {
 		this.canvas = canvas;
 		this.context = context;
-		this.isSummoned = false;
 
 	}
 
 	tick(){
 		this.x = this.canvas.width *6/20;
 		this.y = this.canvas.height*4/5;
-		if(this.isSummoned){
+		if( this.sprite != null){
 			this.sprite.tick(this.x, this.y, this.context);
 		}
 	}
@@ -47,7 +46,6 @@ class Athos {
 	}
 
 	unsummon() {
-		this.isSummoned = false;
 		this.sprite = null;
 	}
 
