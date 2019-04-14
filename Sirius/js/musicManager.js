@@ -73,7 +73,7 @@ class MusicManager {
 	playSpiritCast() {
 		let spiritCast = new Audio(this.spiritCastPath)
 		spiritCast.loop = false;
-		spiritCast.volume = 0.5;
+		spiritCast.volume = 0.4;
 		spiritCast.play();
 	}
 
@@ -104,6 +104,7 @@ class MusicManager {
 	playExplosion() {
 		let explosion = new Audio(this.explosionPath)
 		explosion.loop = false;
+		explosion.volume = 0.5;
 		explosion.play();
 	}
 
@@ -116,6 +117,7 @@ class MusicManager {
 	playIceSpell() {
 		let iceSpell = new Audio(this.iceSpellPath)
 		iceSpell.loop = false;
+		iceSpell.volume = 0.1;
 		iceSpell.play();
 	}
 
