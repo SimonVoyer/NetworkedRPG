@@ -42,9 +42,12 @@ class Zelda {
 		setTimeout(() => this.battlePose(), 800);
 	}
 
-	basicSpell() {
-		this.ice.cast(this.x, this.y -200, this.elderSpawn.x, this.elderSpawn.y);
+	basicSpell(isIce = true) {
 		this.musicManager.playSpell();
+		if (isIce) {
+			this.ice.cast(this.x, this.y -200, this.elderSpawn.x, this.elderSpawn.y);
+			this.musicManager.playIceSpell();
+		}
 		let columnCount = 8;
 		let rowCount = 1;
 		let refreshDelay = 100;
@@ -53,6 +56,7 @@ class Zelda {
 		this.sprite = new TiledImage("images/zelda_sprites_spell.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
 		this.sprite.changeRow(0);
 		this.sprite.changeMinMaxInterval(1, columnCount);
+		setTimeout(()=> this.battlePose(), 700);
 	}
 
 	summonSpirit() {

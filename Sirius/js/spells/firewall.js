@@ -12,15 +12,18 @@ class Firewall {
 		this.sprite.tick(this.x, this.y , this.context);
 	}
 
-	cast() {
+	cast(scale = 1.0) {
 		let columnCount = 15;
 		let rowCount = 1;
 		let refreshDelay = 100;
 		let loopColumns = true;
-		let scale = 3.0;
+		let scale = scale;
 		this.sprite = new TiledImage("images/spell2_sprites.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
 		this.sprite.changeRow(0);
 		this.sprite.changeMinMaxInterval(1, columnCount);
+		if (scale < 10.0){
+			setTimeout(() =>this.cast(scale+1.0), 50);
+		}
 	}
 
 }

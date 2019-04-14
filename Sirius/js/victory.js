@@ -1,3 +1,5 @@
 window.onload = () => {
-	setTimeout(() =>window.location.href = "lobby.php", 4000);
+	let musicManager = new MusicManager();
+	musicManager.playFanfare();
+	setTimeout(() =>window.location.href = "lobby.php", 5000);
 }

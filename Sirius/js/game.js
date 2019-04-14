@@ -53,7 +53,6 @@ const initEventListeners = (zelda, elderSpawn) => {
 			deactivateButtons();
 			sendAttack("Normal", buttonNormal);
 			zelda.basicSpell();
-			setTimeout(()=> zelda.battlePose(), 700);
 			setTimeout(()=> elderSpawn.tookDamage(), 350);
 		}
 	}
@@ -74,6 +73,7 @@ const initEventListeners = (zelda, elderSpawn) => {
 		if (isButtonActive){
 			deactivateButtons();
 			sendAttack("Special2", buttonSpecial2);
+			zelda.basicSpell(false);
 			zelda.summonSpirit();
 			setTimeout(()=> elderSpawn.tookDamage(),500);
 		}

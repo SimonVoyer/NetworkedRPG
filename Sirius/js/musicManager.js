@@ -15,6 +15,8 @@ class MusicManager {
 		this.doomPath = "audio/Ilgynoth_the _heart_of_Corruption.mp3";
 		this.thunderPath = "audio/spawn_sfx.mp3";
 		this.explosionPath = "audio/explosion.mp3"
+		this.fanfarePath = "audio/fanfare.mp3"
+		this.iceSpellPath = "audio/zelda_sounds/ice_spell.mp3"
 	}
 
 	playNightmare() {
@@ -100,9 +102,21 @@ class MusicManager {
 		demonBanished.play();
 	}
 	playExplosion() {
-		let explosion = new Audio(this.ExplosionPath)
+		let explosion = new Audio(this.explosionPath)
 		explosion.loop = false;
 		explosion.play();
+	}
+
+	playFanfare() {
+		let fanfare = new Audio(this.fanfarePath)
+		fanfare.loop = false;
+		fanfare.play();
+	}
+
+	playIceSpell() {
+		let iceSpell = new Audio(this.iceSpellPath)
+		iceSpell.loop = false;
+		iceSpell.play();
 	}
 
 

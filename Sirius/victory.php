@@ -9,7 +9,7 @@
 	require_once("partial/header.php");
 ?>
 
-<video src="video/zelda_victory.mp4" autoplay></video>
+<video src="video/zelda_victory.mp4" autoplay muted></video>
 
 <?php
 	require_once("partial/footer.php");
