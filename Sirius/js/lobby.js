@@ -11,8 +11,17 @@ window.onload = () => {
 		  data.forEach(gameJSON => {
 			  let node = document.createElement("div");
 			  node.setAttribute("class", "availableGame");
+			  let nameDiv = document.createElement("div");
+			  nameDiv.setAttribute("class", "content");
+			  let hpDiv = document.createElement("div");
+			  hpDiv.setAttribute("class", "content");
+			  let typeDiv = document.createElement("div");
+			  typeDiv.setAttribute("class", "content");
+			  let countDiv = document.createElement("div");
+			  countDiv.setAttribute("class", "content");
+			  let expDiv = document.createElement("div");
+			  expDiv.setAttribute("class", "content");
 			  setClickListener(node,gameJSON.id);
-			  let br = document.createElement("br");
 			  let textNodeName = document.createTextNode(gameJSON.name);
 			  let textNodeHP = document.createTextNode(gameJSON.hp);
 			  let textNodeType = document.createTextNode(gameJSON.type);
@@ -20,16 +29,16 @@ window.onload = () => {
 			  let textNodeNB = document.createTextNode(playerCount);
 			  let expCount  = "Experience: "+ gameJSON.exp;
 			  let textNodeEXP = document.createTextNode(expCount);
-			  node.appendChild(textNodeName);
-			  node.appendChild(br);
-			  node.appendChild(textNodeHP);
-			  node.appendChild(br);
-			  node.appendChild(textNodeType);
-			  node.appendChild(br);
-			  node.appendChild(textNodeNB);
-			  node.appendChild(br);
-			  node.appendChild(textNodeEXP);
-			  node.appendChild(br);
+			  nameDiv.appendChild(textNodeName);
+			  hpDiv.appendChild(textNodeHP);
+			  typeDiv.appendChild(textNodeType);
+			  countDiv.appendChild(textNodeNB);
+			  expDiv.appendChild(textNodeEXP);
+			  node.append(nameDiv);
+			  node.append(hpDiv);
+			  node.appendChild(typeDiv);
+			  node.appendChild(countDiv);
+			  node.appendChild(expDiv);
 			  container.appendChild(node);
 		  });
 	  }),
@@ -53,18 +62,6 @@ const setClickListener = (node,id) => {
 	}
 }
 
-//stuff dans json
-
-// public 'id' => string '4' (length=1)
-// public 'name' => string 'Void 4' (length=6)
-// public 'level' => string '0' (length=1)
-// public 'hp' => string '1000' (length=4)
-// public 'max_users' => string '4' (length=1)
-// public 'type' => string 'Heal' (length=4)
-// public 'current_last_action' => string '0' (length=1)
-// public 'current_hp' => string '1000' (length=4)
-// public 'win_count' => string '0' (length=1)
-// public 'loss_count' => string '0' (length=1)
-// public 'last_target' => null
-// public 'nb' => string '0' (length=1)
-// public 'exp' => int 0
+const sheikahEyeAnimation = () => {
+	//alterner entre différentes positions et opacité
+}

@@ -10,9 +10,9 @@
 
 	require_once("partial/header.php");
 ?>
-	<div id="gamesListContainer">
 
-	</div>
+	<div id="eye"></div>
+	<div id="gamesListContainer"></div>
 
 <?php
 	require_once("partial/footer.php");
