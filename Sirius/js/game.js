@@ -17,12 +17,10 @@ window.onload = () => {
 	let allies = [new Allies(1, musicManager, canvas, context), new Allies(2, musicManager, canvas, context), ,new Allies(3, musicManager, canvas, context) ]
 	let elderSpawn = new ElderSpawn(musicManager, canvas, context);
 
-	setTimeout(()=>fetchGameState(zelda,elderSpawn),2000);
+	setTimeout(()=>fetchGameState(zelda,elderSpawn, allies),2000);
 	initEventListeners(zelda, elderSpawn);
 	tick( background, context, zelda, elderSpawn, allies);
 }
-
-
 
 const reactivateButtons = () => {
 	isButtonActive = true;
@@ -47,7 +45,6 @@ const initEventListeners = (zelda, elderSpawn) => {
 	let buttonNormal = document.getElementById("attack1");
 	let buttonSpecial1 = document.getElementById("attack2");
 	let buttonSpecial2 = document.getElementById("attack3");
-
 	buttonNormal.onclick = () => {
 		if (isButtonActive){
 			deactivateButtons();
@@ -80,26 +77,58 @@ const initEventListeners = (zelda, elderSpawn) => {
 	}
 }
 
-const stateDispatcher = (elderSpawn,zelda) => {
+const mageSpawnManager = allies => {
+	//console.log("in mage spawn");
+	//console.log("allies = "+ allies);
+
+	allies.forEach(mage => {
+		console.log("in spawn manager : mageid = " + mage.id + " length = "+ stateJSON.other_players.length);
+		if (mage.id <= stateJSON.other_players.length && mage.isSpawned === false) {
+			mage.spawn();
+		} else if (mage.id > stateJSON.other_players.length && mage.isSpawned === true) {
+			mage.despawn();
+		}
+	});
+}
+
+const mageAttackManager = allies => {
+	//console.log("in mage attack");
+	for (let index = 0; index < stateJSON.other_players.length; ++index) {
+		const playerJSON = stateJSON.other_players[index];
+		if (playerJSON.attacked !== "--") {
+			if (allies[index].isSpawned === true){
+				allies[index].attack();
+			}
+		}
+	}
+}
+
+
+const stateDispatcher = (elderSpawn,zelda, allies) => {
 	isVictorious = /WIN/.test(stateJSON);
 	isDefeated =  /LOST/.test(stateJSON);
-	let refreshedAllyCount = stateJSON.other_players.length;
-	allyCount = stateJSON.other_players.length;
 	if (stateJSON.game.attacked === true){
 		setTimeout(()=> zelda.tookDamage(),300)
 		elderSpawn.attack();
 	}
+	console.log("under attack check");
+
+	mageSpawnManager(allies);
+	mageAttackManager(allies);
+
+
+
 }
 
-const fetchGameState = (zelda,elderSpawn) => {
+const fetchGameState = (zelda,elderSpawn, allies) => {
 	fetch("phpProcessing/gameState.php")
 		.then(response => response.json())
 		.then(data => {
 			postFetch = new Date();
 			stateJSON = data;
 			console.log(JSON.stringify(data));
-			stateDispatcher(elderSpawn,zelda);
-			setTimeout(()=>fetchGameState(zelda,elderSpawn), 2000);
+			stateDispatcher(elderSpawn,zelda, allies);
+			setTimeout(()=>fetchGameState(zelda,elderSpawn, allies), 2000);
 		}
 	);
 }

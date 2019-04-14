@@ -6,6 +6,7 @@ class Allies {
 		this.canvas = canvas;
 		this.context = context;
 		this.y = window.innerHeight
+		this.isSpawned = false;
 
 		if (this.id == 1) {
 			this.battleStance = this.battleStance1;
@@ -19,7 +20,7 @@ class Allies {
 			this.attack = this.attack3;
 			this.x = this.canvas.width /12;
 		}
-		this.spawn();
+		//this.spawn();
 	}
 
 	tick() {
@@ -39,6 +40,7 @@ class Allies {
 
 
 	spawn() {
+		this.isSpawned = true;
 		this.musicManager.playThunder();
 		let columnCount = 6;
 		let rowCount = 1;
@@ -52,6 +54,7 @@ class Allies {
 	}
 
 	despawn() {
+		this.isSpawned = null;
 		this.sprite = null;
 	}
 
