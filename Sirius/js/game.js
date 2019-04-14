@@ -14,9 +14,10 @@ window.onload = () => {
 		context.drawImage(background,0,0);
 	}
 	background.src = "images/background_inside_castle.jpg";
-	let zelda = new Zelda(musicManager, canvas, context);
-	let allies = [new Allies(1, musicManager, canvas, context), new Allies(2, musicManager, canvas, context), ,new Allies(3, musicManager, canvas, context) ]
 	let elderSpawn = new ElderSpawn(musicManager, canvas, context);
+	let zelda = new Zelda(musicManager, canvas, context, elderSpawn);
+	let allies = [new Allies(1, musicManager, canvas, context,elderSpawn), new Allies(2, musicManager, canvas, context,elderSpawn), ,new Allies(3, musicManager, canvas, context,elderSpawn) ]
+
 
 	setTimeout(()=>fetchGameState(zelda,elderSpawn, allies),2000);
 	initEventListeners(zelda, elderSpawn);
