@@ -14,6 +14,7 @@ class MusicManager {
 		this.spiritCastPath = "audio/zelda_sounds/wise_spirit_casting.mp3";
 		this.doomPath = "audio/Ilgynoth_the _heart_of_Corruption.mp3";
 		this.thunderPath = "audio/spawn_sfx.mp3";
+		this.explosionPath = "audio/explosion.mp3"
 	}
 
 	playNightmare() {
@@ -97,6 +98,11 @@ class MusicManager {
 		let demonBanished = new Audio(this.demonBanishedPath)
 		demonBanished.loop = false;
 		demonBanished.play();
+	}
+	playExplosion() {
+		let explosion = new Audio(this.ExplosionPath)
+		explosion.loop = false;
+		explosion.play();
 	}
 
 

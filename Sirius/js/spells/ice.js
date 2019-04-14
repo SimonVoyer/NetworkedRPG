@@ -1,27 +1,24 @@
 class Ice {
 
-	constructor(canvas, context, casterX, casterY, bossX, bossY) {
+	constructor(canvas, context) {
 		this.canvas = canvas
 		this.context = context;
-		this.x = casterX;
-		this.y = casterY;
-		this.bossX = bossX;
-		this.bossY;
 		this.sprite = null;
+		this.speed = 18;
 	}
 
 	tick() {
-		if (this.x < this.bossX) {
-			this.x+=1;
-		} else {
-			this.sprite = null;
-		}
-		if (this.sprite != null){
+		if (this.sprite != null) {
 			this.sprite.tick(this.x, this.y , this.context);
+			if (this.x < this.bossX) {
+				this.x += this.speed;
+			} else {
+				this.sprite = null;
+			}
 		}
 	}
 
-	cast() {
+	cast(casterX, casterY, bossX, bossY) {
 		let columnCount = 4;
 		let rowCount = 1;
 		let refreshDelay = 100;
@@ -30,6 +27,9 @@ class Ice {
 		this.sprite = new TiledImage("images/spell3_sprites.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
 		this.sprite.changeRow(0);
 		this.sprite.changeMinMaxInterval(1, columnCount);
+		this.x = casterX;
+		this.y = casterY;
+		this.bossX = bossX;
+		this.bossY = bossY;
 	}
-
 }

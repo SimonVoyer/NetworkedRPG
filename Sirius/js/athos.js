@@ -1,10 +1,11 @@
 class Athos {
 
-	constructor(canvas, context, elderSpawn) {
+	constructor(musicManager, canvas, context, elderSpawn) {
+		this.musicManager = musicManager;
 		this.canvas = canvas;
 		this.context = context;
 		this.elderSpawn = elderSpawn;
-		this.explosion = new Explosion(canvas,context, this.elderSpawn.x, this.elderSpawn.y);
+		this.explosion = new Explosion(canvas,context);
 	}
 
 	tick(){
@@ -35,7 +36,8 @@ class Athos {
 	}
 
 	cast() {
-		this.explosion.cast();
+		this.explosion.cast(this.elderSpawn.x, this.elderSpawn.y);
+		this.musicManager.playExplosion();
 		let columnCount = 4;
 		let rowCount = 1;
 		let refreshDelay = 100;

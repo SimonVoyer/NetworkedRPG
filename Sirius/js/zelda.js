@@ -6,13 +6,13 @@ class Zelda {
 		this.canvas = canvas;
 		this.context = context;
 		this.elderSpawn = elderSpawn;
-		this.x = window.innerWidth /3;
-		this.y = window.innerHeight;
-		this.wiseSpirit = new Athos(canvas, context, elderSpawn);
-		this.ice = new Ice(canvas, context, this.x, this.y + 50, this.elderSpawn.x, this.elderSpawn.y)
+		this.wiseSpirit = new Athos(musicManager,canvas, context, elderSpawn);
+		this.ice = new Ice(canvas, context)
 	}
 
 	tick(){
+		this.x = window.innerWidth /3;
+		this.y = window.innerHeight;
 		this.sprite.tick(this.x, this.y, this.context);
 		this.wiseSpirit.tick();
 		this.ice.tick();
@@ -43,7 +43,7 @@ class Zelda {
 	}
 
 	basicSpell() {
-		this.ice.cast();
+		this.ice.cast(this.x, this.y -200, this.elderSpawn.x, this.elderSpawn.y);
 		this.musicManager.playSpell();
 		let columnCount = 8;
 		let rowCount = 1;

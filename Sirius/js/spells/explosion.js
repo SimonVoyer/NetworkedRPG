@@ -1,20 +1,21 @@
 class Explosion {
 
-	constructor(canvas, context, x, y) {
+	constructor(canvas, context) {
 		this.canvas = canvas
 		this.context = context;
-		this.x = x
-		this.y = y;
 		this.sprite = null;
 	}
 
 	tick() {
 		if (this.sprite !== null){
+			console.log("in sprite tick, x = " + this.x+"  y = "+ this.y);
 			this.sprite.tick(this.x, this.y , this.context);
 		}
 	}
 
-	cast() {
+	cast(bossX, bossY) {
+		this.x = bossX;
+		this.y = bossY;
 		let columnCount = 19;
 		let rowCount = 1;
 		let refreshDelay = 150;
