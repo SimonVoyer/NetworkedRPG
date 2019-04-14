@@ -20,7 +20,6 @@ class Allies {
 			this.attack = this.attack3;
 			this.x = this.canvas.width /12;
 		}
-		//this.spawn();
 	}
 
 	tick() {
@@ -37,10 +36,7 @@ class Allies {
 		}
 	}
 
-
-
-	spawn() {
-		this.isSpawned = true;
+	thunder(){
 		this.musicManager.playThunder();
 		let columnCount = 6;
 		let rowCount = 1;
@@ -50,11 +46,21 @@ class Allies {
 		this.sprite = new TiledImage("images/thunder_sprites.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
 		this.sprite.changeRow(0);
 		this.sprite.changeMinMaxInterval(1, columnCount);
+	}
+
+	spawn() {
+		this.isSpawned = true;
+		this.thunder();
 		setTimeout(()=>this.battleStance(), 500);
 	}
 
 	despawn() {
+		this.thunder();
 		this.isSpawned = null;
+		setTimeout(()=>this.vanish(), 500);
+	}
+
+	vanish() {
 		this.sprite = null;
 	}
 

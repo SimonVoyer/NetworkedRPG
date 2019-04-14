@@ -2,7 +2,8 @@ window.onload = () => {
 	let musicManager = new MusicManager();
 	musicManager.playFallen();
 
-	setInterval( ()=> fetch("phpProcessing/availableGamesList.php")
+	setInterval( ()=> fetch("phpProcessing/availableGamesList.php", {
+		credentials: 'include'})
 	  .then(response => response.json())
 	  .then(data => {
 		  let container = document.getElementById("gamesListContainer");
