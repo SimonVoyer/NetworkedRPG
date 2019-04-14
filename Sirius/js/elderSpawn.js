@@ -43,7 +43,7 @@ class ElderSpawn {
 	}
 
 	tookDamage() {
-	//	this.musicManager.playDemonDamaged();
+	this.musicManager.playDemonDamaged();
 		if (this.isAlive) {
 			let columnCount = 7;
 			let rowCount = 1;

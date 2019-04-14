@@ -10,13 +10,16 @@ class MusicManager {
 		this.spell2Path = "audio/zelda_sounds/zelda_spell2.mp3";
 		this.fallingPath = "audio/zelda_sounds/zelda_falling.mp3";
 		this.demonAttackPath = "audio/demon_sounds/demon_attack.mp3";
+		this.demonDamagedPath = "audio/demon_sounds/demon_damaged.mp3";
 		this.demonBanishedPath = "audio/demon_sounds/demon_defeated.mp3";
 		this.spiritCastPath = "audio/zelda_sounds/wise_spirit_casting.mp3";
 		this.doomPath = "audio/Ilgynoth_the _heart_of_Corruption.mp3";
 		this.thunderPath = "audio/spawn_sfx.mp3";
-		this.explosionPath = "audio/explosion.mp3"
-		this.fanfarePath = "audio/fanfare.mp3"
 		this.iceSpellPath = "audio/zelda_sounds/ice_spell.mp3"
+		this.fireSpellPath = "audio/zelda_sounds/fire_spell.mp3"
+		this.explosionPath = "audio/zelda_sounds/explosion.mp3"
+		this.fanfarePath = "audio/fanfare.mp3"
+
 	}
 
 	playNightmare() {
@@ -101,6 +104,14 @@ class MusicManager {
 		demonBanished.loop = false;
 		demonBanished.play();
 	}
+
+	playDemonDamaged() {
+		let demonDamaged = new Audio(this.demonDamagedPath)
+		demonDamaged.loop = false;
+		demonDamaged.play();
+	}
+
+
 	playExplosion() {
 		let explosion = new Audio(this.explosionPath)
 		explosion.loop = false;
@@ -119,6 +130,13 @@ class MusicManager {
 		iceSpell.loop = false;
 		iceSpell.volume = 0.1;
 		iceSpell.play();
+	}
+
+	playFireSpell() {
+		let fireSpell = new Audio(this.fireSpellPath)
+		fireSpell.loop = false;
+		//fireSpell.volume = 0.1;
+		fireSpell.play();
 	}
 
 

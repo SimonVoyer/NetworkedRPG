@@ -8,6 +8,7 @@ class Zelda {
 		this.elderSpawn = elderSpawn;
 		this.wiseSpirit = new Athos(musicManager,canvas, context, elderSpawn);
 		this.ice = new Ice(canvas, context)
+		this.firewall = new Firewall(canvas, context);
 	}
 
 	tick(){
@@ -16,6 +17,7 @@ class Zelda {
 		this.sprite.tick(this.x, this.y, this.context);
 		this.wiseSpirit.tick();
 		this.ice.tick();
+		this.firewall.tick();
 	}
 
 	battlePose() {
@@ -79,6 +81,8 @@ class Zelda {
 
 
 	hover(){
+		this.musicManager.playFireSpell();
+		this.firewall.cast(1.0, this.x, this.y)
 		let columnCount = 5;
 		let rowCount = 1;
 		let refreshDelay = 100;

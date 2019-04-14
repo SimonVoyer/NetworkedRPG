@@ -8,7 +8,6 @@ class Explosion {
 
 	tick() {
 		if (this.sprite !== null){
-			console.log("in sprite tick, x = " + this.x+"  y = "+ this.y);
 			this.sprite.tick(this.x, this.y , this.context);
 		}
 	}

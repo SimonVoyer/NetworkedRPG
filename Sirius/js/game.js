@@ -16,7 +16,7 @@ window.onload = () => {
 	background.src = "images/background_inside_castle.jpg";
 	let elderSpawn = new ElderSpawn(musicManager, canvas, context);
 	let zelda = new Zelda(musicManager, canvas, context, elderSpawn);
-	let allies = [new Allies(1, musicManager, canvas, context,elderSpawn), new Allies(2, musicManager, canvas, context,elderSpawn), ,new Allies(3, musicManager, canvas, context,elderSpawn) ]
+	let allies = [new Allies(1, musicManager, canvas, context,elderSpawn), new Allies(2, musicManager, canvas, context,elderSpawn),new Allies(3, musicManager, canvas, context,elderSpawn) ];
 
 
 	setTimeout(()=>fetchGameState(zelda,elderSpawn, allies),2000);
@@ -65,7 +65,7 @@ const initEventListeners = (zelda, elderSpawn) => {
 			setTimeout(()=> zelda.land(),2000)
 			setTimeout(()=> zelda.battlePose(), 2200);
 			zelda.startJump();
-			setTimeout(()=> elderSpawn.tookDamage(), 2000);
+			setTimeout(()=> elderSpawn.tookDamage(), 1500);
 		}
 	}
 
@@ -82,6 +82,8 @@ const initEventListeners = (zelda, elderSpawn) => {
 
 const mageSpawnManager = allies => {
 	allies.forEach(mage => {
+		console.log("mage id = "+ mage.id + " --- lenght" + stateJSON.other_players.length);
+
 		if (mage.id <= stateJSON.other_players.length && mage.isSpawned === false) {
 			mage.spawn();
 		} else if (mage.id > stateJSON.other_players.length && mage.isSpawned === true) {
@@ -91,8 +93,13 @@ const mageSpawnManager = allies => {
 }
 
 const mageAttackManager = allies => {
+	console.log("allies = "+ allies +" --- allies length = " + allies.length);
+
 	for (let index = 0; index < stateJSON.other_players.length; ++index) {
 		const playerJSON = stateJSON.other_players[index];
+		console.log(playerJSON);
+		console.log("ally at current index = "+ allies[index] + "-- index being = " + index);
+
 		if (playerJSON.attacked !== "--") {
 			if (allies[index].isSpawned === true){
 				allies[index].attack();
@@ -155,9 +162,9 @@ const tick = ( background, context, zelda, elderSpawn, allies) => {
 	context.canvas.height = window.innerHeight;
 	context.drawImage(background,0,0);
 	elderSpawn.tick();
-	zelda.tick();
 	allies.forEach(mage => {
 		mage.tick();
 	});
+	zelda.tick();
 	window.requestAnimationFrame(()=> tick(background, context, zelda, elderSpawn, allies));
 }

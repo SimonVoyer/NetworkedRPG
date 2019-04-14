@@ -1,12 +1,14 @@
 class Allies {
 
-	constructor(id, musicManager, canvas, context) {
+	constructor(id, musicManager, canvas, context, elderSpawn) {
 		this.id = id;
 		this.musicManager = musicManager;
 		this.canvas = canvas;
 		this.context = context;
+		this.elderSpawn = elderSpawn;
 		this.y = window.innerHeight
 		this.isSpawned = false;
+		this.fireball = new Fireball(canvas, context);
 
 		if (this.id == 1) {
 			this.battleStance = this.battleStance1;
@@ -33,7 +35,9 @@ class Allies {
 		}
 		if(this.sprite != null)	{
 			this.sprite.tick(this.x, this.y, this.context);
+			this.fireball.tick();
 		}
+
 	}
 
 	thunder(){
@@ -56,7 +60,7 @@ class Allies {
 
 	despawn() {
 		this.thunder();
-		this.isSpawned = null;
+		this.isSpawned = false;
 		setTimeout(()=>this.vanish(), 500);
 	}
 
@@ -101,6 +105,7 @@ class Allies {
 	}
 
 	attack1(){
+		this.fireball.cast(this.x, this.y - 200, this.elderSpawn.x, this.elderSpawn.y )
 		let columnCount = 20;
 		let rowCount = 1;
 		let refreshDelay = 100;
@@ -114,6 +119,7 @@ class Allies {
 	}
 
 	attack2(){
+		this.fireball.cast(this.x, this.y - 200, this.elderSpawn.x, this.elderSpawn.y )
 		let columnCount = 20;
 		let rowCount = 1;
 		let refreshDelay = 100;
@@ -127,16 +133,17 @@ class Allies {
 	}
 
 	attack3(){
+		this.fireball.cast(this.x, this.y - 200, this.elderSpawn.x, this.elderSpawn.y )
 		let columnCount = 50;
 		let rowCount = 1;
-		let refreshDelay = 50;
+		let refreshDelay = 15;
 		let loopColumns = true;
 		let scale = 3.0;
 		this.sprite = new TiledImage("images/mage3_sprites_attack50.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
 		this.sprite.changeRow(0);
 		this.sprite.changeMinMaxInterval(1, columnCount);
 		this.sprite.setFlipped(true);
-		setTimeout(()=>this.battleStance(), 3000);
+		setTimeout(()=>this.battleStance(), 700);
 	}
 
 
