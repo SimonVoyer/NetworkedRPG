@@ -15,14 +15,16 @@ class ElderSpawn {
 	}
 
 	battlePose() {
-		let columnCount = 5;
-		let rowCount = 1;
-		let refreshDelay = 180;
-		let loopColumns = true;
-		let scale = 3.0;
-		this.sprite = new TiledImage("images/demon_sprites_battle.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
-		this.sprite.changeRow(0);
-		this.sprite.changeMinMaxInterval(0, columnCount);
+		if (this.isAlive) {
+			let columnCount = 5;
+			let rowCount = 1;
+			let refreshDelay = 180;
+			let loopColumns = true;
+			let scale = 3.0;
+			this.sprite = new TiledImage("images/demon_sprites_battle.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
+			this.sprite.changeRow(0);
+			this.sprite.changeMinMaxInterval(0, columnCount);
+		}
 	}
 
 	attack(){

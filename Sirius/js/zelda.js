@@ -6,11 +6,17 @@ class Zelda {
 		this.canvas = canvas;
 		this.context = context;
 		this.wiseSpirit = new Athos(canvas, context);
+		this.firewall = new Firewall(canvas, context);
+		this.fireball = new Fireball(canvas, context)
+		this.ice = new Ice(canvas, context)
 	}
 
 	tick(){
 		this.sprite.tick(this.canvas.width /3, window.innerHeight , this.context);
 		this.wiseSpirit.tick();
+		this.firewall.tick();
+		this.fireball.tick();
+		this.ice.tick();
 	}
 
 	battlePose() {

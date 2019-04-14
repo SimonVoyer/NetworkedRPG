@@ -1,6 +1,7 @@
 let isButtonActive = true;
 let isVictorious = false;
 let isDefeated = false;
+let isDisconnected = false;
 let allyCount = 0;
 window.onload = () => {
 	let stateJSON, postFetch;
@@ -45,6 +46,7 @@ const initEventListeners = (zelda, elderSpawn) => {
 	let buttonNormal = document.getElementById("attack1");
 	let buttonSpecial1 = document.getElementById("attack2");
 	let buttonSpecial2 = document.getElementById("attack3");
+	//pour désactiver, mettre le onclick à une function qui retourne false ou null
 	buttonNormal.onclick = () => {
 		if (isButtonActive){
 			deactivateButtons();
@@ -78,11 +80,7 @@ const initEventListeners = (zelda, elderSpawn) => {
 }
 
 const mageSpawnManager = allies => {
-	//console.log("in mage spawn");
-	//console.log("allies = "+ allies);
-
 	allies.forEach(mage => {
-		console.log("in spawn manager : mageid = " + mage.id + " length = "+ stateJSON.other_players.length);
 		if (mage.id <= stateJSON.other_players.length && mage.isSpawned === false) {
 			mage.spawn();
 		} else if (mage.id > stateJSON.other_players.length && mage.isSpawned === true) {
@@ -92,7 +90,6 @@ const mageSpawnManager = allies => {
 }
 
 const mageAttackManager = allies => {
-	//console.log("in mage attack");
 	for (let index = 0; index < stateJSON.other_players.length; ++index) {
 		const playerJSON = stateJSON.other_players[index];
 		if (playerJSON.attacked !== "--") {
@@ -107,12 +104,11 @@ const mageAttackManager = allies => {
 const stateDispatcher = (elderSpawn,zelda, allies) => {
 	isVictorious = /WIN/.test(stateJSON);
 	isDefeated =  /LOST/.test(stateJSON);
+	isDisconnected =  /USER/.test(stateJSON);
 	if (stateJSON.game.attacked === true){
 		setTimeout(()=> zelda.tookDamage(),300)
 		elderSpawn.attack();
 	}
-	console.log("under attack check");
-
 	mageSpawnManager(allies);
 	mageAttackManager(allies);
 
@@ -121,12 +117,13 @@ const stateDispatcher = (elderSpawn,zelda, allies) => {
 }
 
 const fetchGameState = (zelda,elderSpawn, allies) => {
-	fetch("phpProcessing/gameState.php")
+	fetch("phpProcessing/gameState.php", {
+		credentials: 'include'})
 		.then(response => response.json())
 		.then(data => {
 			postFetch = new Date();
 			stateJSON = data;
-			console.log(JSON.stringify(data));
+			//console.log(JSON.stringify(data));
 			stateDispatcher(elderSpawn,zelda, allies);
 			setTimeout(()=>fetchGameState(zelda,elderSpawn, allies), 2000);
 		}
@@ -153,6 +150,8 @@ const tick = ( background, context, zelda, elderSpawn, allies) => {
 		elderSpawn.attack();
 		zelda.down();
 		setTimeout( ()=> defeated(), 2000);
+	} else if (isDisconnected){
+		window.location.href = "connection.php";
 	}
 
 	context.canvas.width = window.innerWidth;

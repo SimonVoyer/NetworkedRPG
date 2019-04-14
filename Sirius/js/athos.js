@@ -3,7 +3,6 @@ class Athos {
 	constructor(canvas, context) {
 		this.canvas = canvas;
 		this.context = context;
-
 	}
 
 	tick(){
@@ -15,7 +14,6 @@ class Athos {
 	}
 
 	summon() {
-		this.isSummoned = true;
 		setTimeout(() => this.cast(), 300);
 		setTimeout(()=>this.unsummon(), 2500);
 		this.prepareToCast();
@@ -44,6 +42,7 @@ class Athos {
 		this.sprite.changeMinMaxInterval(1, columnCount);
 		this.sprite.setFlipped(true);
 	}
+
 
 	unsummon() {
 		this.sprite = null;
