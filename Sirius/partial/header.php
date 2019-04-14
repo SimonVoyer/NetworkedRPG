@@ -30,6 +30,7 @@
 				<script src="js/spells/firewall.js"></script>
 				<script src="js/spells/fireball.js"></script>
 				<script src="js/spells/ice.js"></script>
+				<script src="js/spells/explosion.js"></script>
 			<?php
 		} else if (preg_match("/victory.php/", $_SERVER["PHP_SELF"]) === 1){
 			?>

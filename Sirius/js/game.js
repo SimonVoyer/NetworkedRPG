@@ -75,7 +75,7 @@ const initEventListeners = (zelda, elderSpawn) => {
 			deactivateButtons();
 			sendAttack("Special2", buttonSpecial2);
 			zelda.summonSpirit();
-			setTimeout(()=> elderSpawn.tookDamage(),2000);
+			setTimeout(()=> elderSpawn.tookDamage(),500);
 		}
 	}
 }
@@ -101,7 +101,6 @@ const mageAttackManager = allies => {
 	}
 }
 
-
 const stateDispatcher = (elderSpawn,zelda, allies) => {
 	isVictorious = /WIN/.test(stateJSON);
 	isDefeated =  /LOST/.test(stateJSON);
@@ -112,9 +111,6 @@ const stateDispatcher = (elderSpawn,zelda, allies) => {
 	}
 	mageSpawnManager(allies);
 	mageAttackManager(allies);
-
-
-
 }
 
 const fetchGameState = (zelda,elderSpawn, allies) => {
@@ -158,8 +154,8 @@ const tick = ( background, context, zelda, elderSpawn, allies) => {
 	context.canvas.width = window.innerWidth;
 	context.canvas.height = window.innerHeight;
 	context.drawImage(background,0,0);
-	zelda.tick();
 	elderSpawn.tick();
+	zelda.tick();
 	allies.forEach(mage => {
 		mage.tick();
 	});

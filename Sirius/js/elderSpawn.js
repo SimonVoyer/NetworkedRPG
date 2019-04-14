@@ -5,12 +5,14 @@ class ElderSpawn {
 		this.canvas = canvas;
 		this.context = context;
 		this.isAlive = true;
+		this.x = this.canvas.width * 7/10;
+		this.y =  window.innerHeight;
 		this.battlePose();
 	}
 
 	tick() {
 		if(this.sprite != null)	{
-			this.sprite.tick(this.canvas.width * 7/10, window.innerHeight , this.context);
+			this.sprite.tick(this.x, this.y, this.context);
 		}
 	}
 

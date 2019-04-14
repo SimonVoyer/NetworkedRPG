@@ -1,8 +1,10 @@
 class Athos {
 
-	constructor(canvas, context) {
+	constructor(canvas, context, elderSpawn) {
 		this.canvas = canvas;
 		this.context = context;
+		this.elderSpawn = elderSpawn;
+		this.explosion = new Explosion(canvas,context, this.elderSpawn.x, this.elderSpawn.y);
 	}
 
 	tick(){
@@ -11,11 +13,12 @@ class Athos {
 		if( this.sprite != null){
 			this.sprite.tick(this.x, this.y, this.context);
 		}
+		this.explosion.tick();
 	}
 
 	summon() {
 		setTimeout(() => this.cast(), 300);
-		setTimeout(()=>this.unsummon(), 2500);
+		setTimeout(()=>this.unsummon(), 2000);
 		this.prepareToCast();
 	}
 
@@ -32,6 +35,7 @@ class Athos {
 	}
 
 	cast() {
+		this.explosion.cast();
 		let columnCount = 4;
 		let rowCount = 1;
 		let refreshDelay = 100;
@@ -46,6 +50,7 @@ class Athos {
 
 	unsummon() {
 		this.sprite = null;
+		this.explosion.sprite = null;
 	}
 
 }

@@ -1,21 +1,20 @@
 class Zelda {
 
-	constructor(musicManager, canvas, context) {
+	constructor(musicManager, canvas, context, elderSpawn) {
 		this.battlePose();
 		this.musicManager = musicManager;
 		this.canvas = canvas;
 		this.context = context;
-		this.wiseSpirit = new Athos(canvas, context);
-		this.firewall = new Firewall(canvas, context);
-		this.fireball = new Fireball(canvas, context)
-		this.ice = new Ice(canvas, context)
+		this.elderSpawn = elderSpawn;
+		this.x = window.innerWidth /3;
+		this.y = window.innerHeight;
+		this.wiseSpirit = new Athos(canvas, context, elderSpawn);
+		this.ice = new Ice(canvas, context, this.x, this.y + 50, this.elderSpawn.x, this.elderSpawn.y)
 	}
 
 	tick(){
-		this.sprite.tick(this.canvas.width /3, window.innerHeight , this.context);
+		this.sprite.tick(this.x, this.y, this.context);
 		this.wiseSpirit.tick();
-		this.firewall.tick();
-		this.fireball.tick();
 		this.ice.tick();
 	}
 
@@ -44,6 +43,7 @@ class Zelda {
 	}
 
 	basicSpell() {
+		this.ice.cast();
 		this.musicManager.playSpell();
 		let columnCount = 8;
 		let rowCount = 1;
