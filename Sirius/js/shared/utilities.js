@@ -26,21 +26,26 @@ const setHeaderListeners = () => {
 
 }
 
+
+const fetchUserInfo = () => {
+	fetch("phpProcessing/userInfo.php", {
+		credentials: 'include'})
+	  .then(response => response.json())
+	  .then(data => {
+		console.log(data);
+		deactivateStatus();
+	});
+}
+
+
+
+
 const deactivateStatus = () => {
-	console.log("deactivated");
-	document.getElementById("status").onclick = null;
 	setTimeout(() => activateStatus(), 2000);
+	document.getElementById("status").removeEventListener("click", fetchUserInfo);
 }
 
 const activateStatus = () => {
-	document.getElementById("status").onclick = () =>{
-
-		fetch("phpProcessing/userInfo.php", {
-			credentials: 'include'})
-		  .then(response => response.json())
-		  .then(data => {
-			console.log(data);
-			deactivateStatus();
-		})
-	};
+	console.log("in activate status");
+	document.getElementById("status").addEventListener("click", fetchUserInfo);
 }

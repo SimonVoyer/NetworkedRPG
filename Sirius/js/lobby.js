@@ -2,8 +2,10 @@ window.onload = () => {
 	let musicManager = new MusicManager();
 	musicManager.playFallen();
 	setTimeout(()=>gameListManager(),2000);
+	setHeaderListeners();
 	let sheikahEye = new SheikahEye();
 	sheikahEye.tick();
+
 }
 
 
@@ -22,7 +24,7 @@ const setClickListener = (node,id) => {
 			}
 		})
 	}
-	setHeaderListeners();
+
 }
 
 const gameListManager = () => {
