@@ -4,8 +4,7 @@ class SheikahEye {
 		this.node = document.getElementById("eye");
 		this.counter = 0.01;
 		this.isAscending = true;
-		this.top = 3;
-		this.left = 3;
+		this.switchPosition();
 	}
 
 	tick(){
@@ -13,18 +12,12 @@ class SheikahEye {
 		this.node.style.top = this.top + "vh";
 		this.node.style.left = this.left + "vw";
 		this.ascentCheck();
-		if (Math.random() < 0.34) {
-			if (this.isAscending){
-				this.counter += 0.01
-			} else {
-				this.counter -= 0.01;
-			}
-		}
+		this.counterAdjustment();
 		setTimeout(()=> this.tick(), 1);
 	}
 
 	ascentCheck(){
-		if (this.counter > 0.99) {
+		if (this.counter > 0.5) {
 			this.isAscending = false;
 		} else if (this.counter < 0.01) {
 			this.isAscending = true;
@@ -32,22 +25,27 @@ class SheikahEye {
 		}
 	}
 
+	counterAdjustment() {
+		if (this.isAscending){
+			this.counter += 0.001;
+		} else {
+			this.counter -= 0.001;
+		}
+	}
+
 	switchPosition() {
-		if (Math.random() < 0.2) {
+		if (Math.random() < 0.1) {
 			this.top = 3;
 			this.left = 3;
-		} else if (Math.random() < 0.4) {
-			this.top = 60;
-			this.left = 40;
-		}else if (Math.random() < 0.6) {
+		} else if (Math.random() < 0.2) {
+			this.top = 66;
+			this.left = 38;
+		}else if (Math.random() < 0.3) {
 			this.top = 3;
 			this.left = 75;
-		}else if (Math.random() < 0.8) {
-			this.top = 3;
-			this.left = 70;
-		}else {
-			this.top = 3;
-			this.left = 70;
+		} else {
+			this.top = -100;
+			this.left = -100;
 		}
 	}
 
