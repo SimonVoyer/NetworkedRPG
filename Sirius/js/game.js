@@ -100,6 +100,7 @@ const mageAttackManager = allies => {
 		if (playerJSON.attacked !== "--") {
 			if (allies[index].isSpawned === true){
 				allies[index].attack();
+				setTimeout(()=>allies[index].elderSpawn.tookDamage(), 300);
 			}
 		}
 	}
