@@ -1,7 +1,7 @@
 window.onload = () => {
 	let musicManager = new MusicManager();
 	musicManager.playFallen();
-	gameListManager();
+	setTimeout(()=>gameListManager(),2000);
 	let sheikahEye = new SheikahEye();
 	sheikahEye.tick();
 }

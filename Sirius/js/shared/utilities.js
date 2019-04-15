@@ -22,14 +22,25 @@ const setHeaderListeners = () => {
 		});
 	}
 
+	activateStatus();
+
+}
+
+const deactivateStatus = () => {
+	console.log("deactivated");
+	document.getElementById("status").onclick = null;
+	setTimeout(() => activateStatus(), 2000);
+}
+
+const activateStatus = () => {
 	document.getElementById("status").onclick = () =>{
+
 		fetch("phpProcessing/userInfo.php", {
 			credentials: 'include'})
 		  .then(response => response.json())
 		  .then(data => {
 			console.log(data);
+			deactivateStatus();
 		})
 	};
 }
-
-deac
