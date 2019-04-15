@@ -18,7 +18,6 @@
 				<link rel="stylesheet" type="text/css" media="screen" href="css/lobby.css" />
 				<script src="js/lobby.js"></script>
 				<script src="js/sheikahEye.js"></script>
-				<!-- <script src="js/shared/header.js"></script> -->
 			<?php
 		} else if (preg_match("/game.php/", $_SERVER["PHP_SELF"]) === 1) {
 			?>
@@ -52,12 +51,19 @@
 </head>
 <body>
 <?php
-	if(preg_match("/lobby.php/", $_SERVER["PHP_SELF"]) === 1  || preg_match("/game.php/", $_SERVER["PHP_SELF"]) === 1 ) {
+	if(preg_match("/lobby.php/", $_SERVER["PHP_SELF"]) === 1  ) {
 		?>
 
 			<header>
 				<span id="disconnect">Disconnect</span>
 				<span id="status">Status</span>
+			</header>
+		<?php
+	} else if (preg_match("/game.php/", $_SERVER["PHP_SELF"]) === 1) {
+		?>
+			<header>
+				<span id="disconnect">Disconnect</span>
+				<span id="status" style="display:none">Status</span>
 			</header>
 		<?php
 	}

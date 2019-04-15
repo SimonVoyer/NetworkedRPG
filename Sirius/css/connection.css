@@ -1,13 +1,7 @@
 
-@font-face{
-	src: url(../fonts/sharkshock_enchanted-land/Enchanted_Land.otf);
-	font-family: enchant;
-}
-
 * {
-	font-family: enchant;
-	font-size: 1.5vw;
 	color: black;
+	font-size: 1.5vw;
 }
 
 body{

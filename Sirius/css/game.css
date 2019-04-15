@@ -8,11 +8,18 @@
 
 #attackButtons {
 	display:flex;
+	flex-direction: column;
 	justify-content: space-around;
+	flex-wrap: nowrap;
 	position: absolute;
-	top:1vh;
-	right:0;
+	top:25vh;
+	left: 2vw;
 	width: 50vw;
+	height: 30vh;
+}
+
+#attackButtons:hover {
+	cursor: pointer;
 }
 
 
@@ -45,6 +52,10 @@ canvas {
 	z-index: -5;
 	width: 1600px;
 	height: 700px;
+}
+
+#disconnect {
+	color: #00b8ff;
 }
 
 html {

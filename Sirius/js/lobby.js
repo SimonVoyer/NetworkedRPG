@@ -8,7 +8,6 @@ window.onload = () => {
 
 }
 
-
 const setClickListener = (node,id) => {
 	node.onclick = () => {
 		let formData = new FormData();
@@ -70,5 +69,4 @@ const gameListManager = () => {
 		 });
 		 setTimeout(()=>gameListManager(),2000);
 	});
-
 }

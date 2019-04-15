@@ -5,12 +5,13 @@
 	margin-bottom: 25px;
 	border-radius: 40%;
 	cursor: pointer;
+	font-size: 5vw;
 }
 
 .content {
 	text-align: center;
 	font-weight: bold;
-	font-size: 0.8vw;
+	font-size: 3vw;
 }
 
 #eye {

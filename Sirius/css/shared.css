@@ -1,6 +1,13 @@
+@font-face{
+	src: url(../fonts/sharkshock_enchanted-land/Enchanted_Land.otf);
+	font-family: enchant;
+}
+
 * {
 	box-sizing: border-box;
+	font-family: enchant;
 }
+
 
 html {
 	margin:0;
@@ -13,9 +20,24 @@ html {
 
 header{
 	color: white;
-
+	display: flex;
+	justify-content: space-around;
+	background-color: black;
+	width: 60vw;
+	height: 7vh;
+	margin: auto;
+	position: relative;
+	top: -3vh;
+	font-size: 3vw;
+	border: black 1px solid;
+	border-radius: 30%;
 }
 
-header:hover {
+#status, #disconnect {
+	position: relative;
+	top: 1vh;
+}
+
+#status:hover, #disconnect:hover{
 	cursor: pointer;
 }
