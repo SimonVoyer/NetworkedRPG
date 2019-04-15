@@ -21,9 +21,7 @@ const setHeaderListeners = () => {
 			}
 		});
 	}
-
 	activateStatus();
-
 }
 
 
@@ -37,15 +35,11 @@ const fetchUserInfo = () => {
 	});
 }
 
-
-
-
 const deactivateStatus = () => {
 	setTimeout(() => activateStatus(), 2000);
 	document.getElementById("status").removeEventListener("click", fetchUserInfo);
 }
 
 const activateStatus = () => {
-	console.log("in activate status");
 	document.getElementById("status").addEventListener("click", fetchUserInfo);
 }

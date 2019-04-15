@@ -3,8 +3,10 @@ let isVictorious = false;
 let isDefeated = false;
 let isDisconnected = false;
 let allyCount = 0;
+let elderSpawn, zelda, allies;
+let stateJSON, postFetch;
+
 window.onload = () => {
-	let stateJSON, postFetch;
 	let musicManager = new MusicManager();
 	musicManager.playNightmare();
 	let canvas = document.querySelector("canvas");
@@ -14,21 +16,13 @@ window.onload = () => {
 		context.drawImage(background,0,0);
 	}
 	background.src = "images/background_inside_castle.jpg";
-	let elderSpawn = new ElderSpawn(musicManager, canvas, context);
-	let zelda = new Zelda(musicManager, canvas, context, elderSpawn);
-	let allies = [new Allies(1, musicManager, canvas, context,elderSpawn), new Allies(2, musicManager, canvas, context,elderSpawn),new Allies(3, musicManager, canvas, context,elderSpawn) ];
-	setTimeout(()=>fetchGameState(zelda,elderSpawn, allies),2000);
-	initEventListeners(zelda, elderSpawn);
-	tick( background, context, zelda, elderSpawn, allies);
-}
-
-const reactivateButtons = () => {
-	isButtonActive = true;
-}
-
-const deactivateButtons = () => {
-	isButtonActive = false;
-	setTimeout(reactivateButtons, 2000);
+	elderSpawn = new ElderSpawn(musicManager, canvas, context);
+	zelda = new Zelda(musicManager, canvas, context, elderSpawn);
+	allies = [new Allies(1, musicManager, canvas, context,elderSpawn), new Allies(2, musicManager, canvas, context,elderSpawn),new Allies(3, musicManager, canvas, context,elderSpawn) ];
+	setTimeout(()=>fetchGameState(),2000);
+	setHeaderListeners();
+	initEventListeners();
+	tick( background, context);
 }
 
 const sendAttack = (attackName) => {
@@ -39,47 +33,52 @@ const sendAttack = (attackName) => {
 		credentials: 'include',
 		body: formData
 	});
+
 }
 
-const initEventListeners = (zelda, elderSpawn) => {
-	let buttonNormal = document.getElementById("attack1");
-	let buttonSpecial1 = document.getElementById("attack2");
-	let buttonSpecial2 = document.getElementById("attack3");
-	//pour désactiver, mettre le onclick à une function qui retourne false ou null
-	buttonNormal.onclick = () => {
-		if (isButtonActive){
-			deactivateButtons();
-			sendAttack("Normal", buttonNormal);
-			zelda.basicSpell();
-			setTimeout(()=> elderSpawn.tookDamage(), 350);
-		}
-	}
+const normalButton = () => {
+	sendAttack("Normal");
+	deactivateButtons();
+	zelda.basicSpell();
+	setTimeout(()=> elderSpawn.tookDamage(), 350);
 
-	buttonSpecial1.onclick = () => {
-		if (isButtonActive) {
-			deactivateButtons();
-			sendAttack("Special1",buttonSpecial1 );
-			setTimeout(()=> zelda.hover(),300);
-			setTimeout(()=> zelda.land(),2000)
-			setTimeout(()=> zelda.battlePose(), 2200);
-			zelda.startJump();
-			setTimeout(()=> elderSpawn.tookDamage(), 1500);
-		}
-	}
-
-	buttonSpecial2.onclick = () => {
-		if (isButtonActive){
-			deactivateButtons();
-			sendAttack("Special2", buttonSpecial2);
-			zelda.basicSpell(false);
-			zelda.summonSpirit();
-			setTimeout(()=> elderSpawn.tookDamage(),500);
-		}
-	}
-	setHeaderListeners();
 }
 
-const mageSpawnManager = allies => {
+const specialButton1 = () => {
+	sendAttack("Special1");
+	deactivateButtons();
+	setTimeout(()=> zelda.hover(),300);
+	setTimeout(()=> zelda.land(),2000)
+	setTimeout(()=> zelda.battlePose(), 2200);
+	zelda.startJump();
+	setTimeout(()=> elderSpawn.tookDamage(), 1500);
+
+}
+
+const specialButton2 = () =>{
+	sendAttack("Special2");
+	deactivateButtons();
+	zelda.basicSpell(false);
+	zelda.summonSpirit();
+	setTimeout(()=> elderSpawn.tookDamage(),500);
+}
+
+const deactivateButtons = () => {
+	document.getElementById("attack1").removeEventListener("click", normalButton);
+	document.getElementById("attack2").removeEventListener("click", specialButton1);
+	document.getElementById("attack3").removeEventListener("click", specialButton2);
+	setTimeout(()=>initEventListeners(),2000);
+
+}
+
+
+const initEventListeners = () => {
+	document.getElementById("attack1").addEventListener("click",  normalButton);
+	document.getElementById("attack2").addEventListener("click",  specialButton1);
+	document.getElementById("attack3").addEventListener("click", specialButton2);
+}
+
+const mageSpawnManager =() => {
 	for (let index = 0; index < allies.length; ++index) {
 		const mage = allies[index];
 		const playerJSON = stateJSON.other_players[index];
@@ -94,7 +93,7 @@ const mageSpawnManager = allies => {
 	}
 }
 
-const mageAttackManager = allies => {
+const mageAttackManager = () => {
 	for (let index = 0; index < stateJSON.other_players.length; ++index) {
 		const playerJSON = stateJSON.other_players[index];
 		if (playerJSON.attacked !== "--") {
@@ -106,7 +105,7 @@ const mageAttackManager = allies => {
 	}
 }
 
-const stateDispatcher = (elderSpawn,zelda, allies) => {
+const stateDispatcher = () => {
 	isVictorious = /WIN/.test(stateJSON);
 	isDefeated =  /LOST/.test(stateJSON);
 	isDisconnected =  /USER/.test(stateJSON);
@@ -114,11 +113,11 @@ const stateDispatcher = (elderSpawn,zelda, allies) => {
 		setTimeout(()=> zelda.tookDamage(),300)
 		elderSpawn.attack();
 	}
-	mageSpawnManager(allies);
-	mageAttackManager(allies);
+	mageSpawnManager();
+	mageAttackManager();
 }
 
-const fetchGameState = (zelda,elderSpawn, allies) => {
+const fetchGameState = ( ) => {
 	fetch("phpProcessing/gameState.php", {
 		credentials: 'include'})
 		.then(response => response.json())
@@ -126,8 +125,8 @@ const fetchGameState = (zelda,elderSpawn, allies) => {
 			postFetch = new Date();
 			stateJSON = data;
 			console.log(JSON.stringify(data));
-			stateDispatcher(elderSpawn,zelda, allies);
-			setTimeout(()=>fetchGameState(zelda,elderSpawn, allies), 2000);
+			stateDispatcher();
+			setTimeout(()=>fetchGameState(), 2000);
 		}
 	);
 }
@@ -141,7 +140,7 @@ const defeated = ()=>{
 }
 
 
-const tick = ( background, context, zelda, elderSpawn, allies) => {
+const tick = ( background, context) => {
 	if (isVictorious) {
 		isVictorious = false;
 		elderSpawn.isAlive = false;
@@ -164,5 +163,5 @@ const tick = ( background, context, zelda, elderSpawn, allies) => {
 		mage.tick();
 	});
 	zelda.tick();
-	window.requestAnimationFrame(()=> tick(background, context, zelda, elderSpawn, allies));
+	window.requestAnimationFrame(()=> tick(background, context));
 }
