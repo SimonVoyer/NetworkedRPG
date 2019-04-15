@@ -170,7 +170,4 @@ class Allies {
 		this.sprite.setFlipped(true);
 		setTimeout(()=>this.battleStance(), 700);
 	}
-
-
-
 }

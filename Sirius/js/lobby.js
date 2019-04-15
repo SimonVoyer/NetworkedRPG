@@ -51,7 +51,7 @@ const gameListManager = () => {
 			  let textNodeName = document.createTextNode(gameJSON.name);
 			  let textNodeHP = document.createTextNode(gameJSON.hp);
 			  let textNodeType = document.createTextNode(gameJSON.type);
-			  let playerCount = gameJSON.nb + " / " + gameJSON.max_users;
+			  let playerCount = gameJSON.nb + "  on  " + gameJSON.max_users;
 			  let textNodeNB = document.createTextNode(playerCount);
 			  let expCount  = "Experience: "+ gameJSON.exp;
 			  let textNodeEXP = document.createTextNode(expCount);

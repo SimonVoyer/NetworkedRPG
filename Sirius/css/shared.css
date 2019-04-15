@@ -35,7 +35,7 @@ header{
 
 #status, #disconnect {
 	position: relative;
-	top: 1vh;
+	top: 0.5vh;
 }
 
 #status:hover, #disconnect:hover{
