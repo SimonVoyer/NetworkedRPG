@@ -17,6 +17,7 @@
 			?>
 				<link rel="stylesheet" type="text/css" media="screen" href="css/lobby.css" />
 				<script src="js/lobby.js"></script>
+				<script src="js/sheikahEye.js"></script>
 			<?php
 		} else if (preg_match("/game.php/", $_SERVER["PHP_SELF"]) === 1) {
 			?>

@@ -1,7 +1,35 @@
 window.onload = () => {
 	let musicManager = new MusicManager();
 	musicManager.playFallen();
+	gameListManager();
+	let sheikahEye = new SheikahEye();
+	sheikahEye.tick();
+}
 
+
+const setClickListener = (node,id) => {
+	node.onclick = () => {
+		let formData = new FormData();
+		formData.append("id", id);
+		fetch("phpProcessing/joinGame.php", {
+			method: "POST",
+			credentials: 'include',
+			body: formData
+		}).then(response => response.json())
+		.then(data => {
+			if (data === "GAME_ENTERED") {
+				window.location.href = "game.php";
+			}
+		})
+	}
+}
+
+const sheikahEyeAnimation = () => {
+	//alterner entre différentes positions et opacité
+
+}
+
+const gameListManager = () => {
 	setInterval( ()=> fetch("phpProcessing/availableGamesList.php", {
 		credentials: 'include'})
 	  .then(response => response.json())
@@ -43,25 +71,4 @@ window.onload = () => {
 		  });
 	  }),
 	  2000);
-}
-
-const setClickListener = (node,id) => {
-	node.onclick = () => {
-		let formData = new FormData();
-		formData.append("id", id);
-		fetch("phpProcessing/joinGame.php", {
-			method: "POST",
-			credentials: 'include',
-			body: formData
-		}).then(response => response.json())
-		.then(data => {
-			if (data === "GAME_ENTERED") {
-				window.location.href = "game.php";
-			}
-		})
-	}
-}
-
-const sheikahEyeAnimation = () => {
-	//alterner entre différentes positions et opacité
 }
