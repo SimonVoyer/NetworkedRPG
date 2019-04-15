@@ -17,8 +17,6 @@ window.onload = () => {
 	let elderSpawn = new ElderSpawn(musicManager, canvas, context);
 	let zelda = new Zelda(musicManager, canvas, context, elderSpawn);
 	let allies = [new Allies(1, musicManager, canvas, context,elderSpawn), new Allies(2, musicManager, canvas, context,elderSpawn),new Allies(3, musicManager, canvas, context,elderSpawn) ];
-
-
 	setTimeout(()=>fetchGameState(zelda,elderSpawn, allies),2000);
 	initEventListeners(zelda, elderSpawn);
 	tick( background, context, zelda, elderSpawn, allies);
@@ -78,11 +76,10 @@ const initEventListeners = (zelda, elderSpawn) => {
 			setTimeout(()=> elderSpawn.tookDamage(),500);
 		}
 	}
+	setHeaderListeners();
 }
 
 const mageSpawnManager = allies => {
-	console.log("in mage spawn manager");
-
 	for (let index = 0; index < allies.length; ++index) {
 		const mage = allies[index];
 		const playerJSON = stateJSON.other_players[index];

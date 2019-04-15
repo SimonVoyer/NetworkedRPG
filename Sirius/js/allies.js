@@ -30,16 +30,15 @@ class Allies {
 	}
 
 	tick() {
-		this.y = window.innerHeight;
-		if (this.id == 1) {
-			this.x = this.canvas.width * 4.5/18;
-		} else if (this.id == 2) {
-			this.x = this.canvas.width * 1/6;
-		} else if (this.id == 3) {
-			this.x = this.canvas.width * 0.8/9;
-		}
-
 		if(this.sprite != null)	{
+			this.y = window.innerHeight;
+			if (this.id == 1) {
+				this.x = this.canvas.width * 4.5/18;
+			} else if (this.id == 2) {
+				this.x = this.canvas.width * 1/6;
+			} else if (this.id == 3) {
+				this.x = this.canvas.width * 0.8/9;
+			}
 			this.context.font = "16px Arial";
 			this.context.fillStyle = "white";
 			this.context.textAlign = "center";
@@ -90,8 +89,6 @@ class Allies {
 	}
 
 	updateStats(hp,mp) {
-		console.log("in update stats");
-
 		this.hp = hp;
 		this.mp = mp;
 	}
@@ -150,14 +147,14 @@ class Allies {
 		this.fireball.cast(this.x, this.y - 300, this.elderSpawn.x, this.elderSpawn.y )
 		let columnCount = 20;
 		let rowCount = 1;
-		let refreshDelay = 100;
+		let refreshDelay = 20;
 		let loopColumns = true;
 		let scale = 3.0;
 		this.sprite = new TiledImage("images/mage2_sprites_attack20.png", columnCount, rowCount, refreshDelay, loopColumns, scale, null);
 		this.sprite.changeRow(0);
 		this.sprite.changeMinMaxInterval(1, columnCount);
 		this.sprite.setFlipped(true);
-		setTimeout(()=>this.battleStance(), 1500);
+		setTimeout(()=>this.battleStance(), refreshDelay*columnCount);
 	}
 
 	attack3(){

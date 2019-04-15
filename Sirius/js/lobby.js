@@ -22,6 +22,7 @@ const setClickListener = (node,id) => {
 			}
 		})
 	}
+	setHeaderListeners();
 }
 
 const gameListManager = () => {
