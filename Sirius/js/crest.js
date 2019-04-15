@@ -7,13 +7,15 @@ class Crest {
 
 	tick(){
 		this.rotate();
-		if (this.y < window.innerHeight /10) {
+		if (this.y < window.innerHeight /8) {
 			this.y += 1;
 			this.node.style.top = this.y+"px";
+		} else {
+			this.node.style.top = this.y+"px"
 		}
 	}
 
-	rotate(){
+	rotate() {
 		this.angle +=1;
 		this.node.style = 'transform: rotateY(' + this.angle % 360 + 'deg)'
 	}

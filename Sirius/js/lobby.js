@@ -24,10 +24,6 @@ const setClickListener = (node,id) => {
 	}
 }
 
-const sheikahEyeAnimation = () => {
-	//alterner entre différentes positions et opacité
-
-}
 
 const gameListManager = () => {
 	setInterval( ()=> fetch("phpProcessing/availableGamesList.php", {

@@ -5,10 +5,38 @@ body{
 	position: relative;
 }
 
+button {
+	width: 5vw;
+	/* margin: auto; */
+}
+
 #crest {
 	position: absolute;
 	width: 500px;
 	height: 298px;
 	background-image: url("../images/zelda_crest_500x298.png");
-	left: 37vw;
+	left: 60vw;
+}
+
+.input, button {
+	position: relative;
+	top: 2vh;
+}
+
+form {
+	border: rgba(192,192,192,0.65) 1px solid;
+	border-radius: 50%;
+	position: absolute;
+	width: 20vw;
+	height: 20vh;
+	top: 15vh;
+	left: 10vw;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+	background: linear-gradient( to right, rgba(192,192,192,0.65), rgba(238,232,170,0.65) );
+	/* box-shadow: 10px 20px 30px, rgb(192,192,192); */
+	box-shadow: 5px 20px 100px rgb(238,232,170);
 }

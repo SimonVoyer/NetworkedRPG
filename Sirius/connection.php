@@ -6,17 +6,15 @@
 	require_once("action/ConnectionAction.php");
 	$action = new ConnectionAction();
 	$action->execute();
-
-
 	require_once("partial/header.php");
 ?>
 
-	<form action="connection.php" method="post">
+	<form action="connection.php" method="post" >
 	<?php
-		if (isset($_SESSION["username"])) {
+		if (isset($_COOKIE["username"])) {
 			?>
 			<div class = "input">
-				username: <input type="text" name="username" id="username_input" value=<?=$_SESSION["username"]  ?> >
+				username: <input type="text" name="username" id="username_input" value=<?=$_COOKIE["username"]  ?> >
 			</div>
 		<?php
 		} else {
@@ -27,16 +25,12 @@
 			<?php
 		}
 	?>
-
 		<div class = "input">
 			password: <input type="password" name="password" id="password_input">
 		</div>
 		<button type="submit">
 			connection
 		</button>
-
-		<div id="crest"></div>
-
 		<div>
 			<?php
 				 if (isset($action->isConnected) && !$action->isConnected ){
@@ -47,6 +41,6 @@
 			?>
 		</div>
 	</form>
-
+	<div id="crest"></div>
 	<?php
 	require_once("partial/footer.php");
