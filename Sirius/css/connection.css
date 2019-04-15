@@ -1,3 +1,15 @@
+
+@font-face{
+	src: url(../fonts/sharkshock_enchanted-land/Enchanted_Land.otf);
+	font-family: enchant;
+}
+
+* {
+	font-family: enchant;
+	font-size: 1.5vw;
+	color: black;
+}
+
 body{
 	width: 100vw;
 	height: 100vh;
@@ -7,7 +19,12 @@ body{
 
 button {
 	width: 5vw;
-	/* margin: auto; */
+	border: 1px rgba(192,192,192,0.65) solid;
+	border-radius: 25%;
+}
+
+button:hover{
+	cursor: pointer;
 }
 
 #crest {
@@ -23,12 +40,22 @@ button {
 	top: 2vh;
 }
 
+input {
+	border: white 1px solid;
+	border-radius: 20px;
+}
+
+input:focus {
+	outline: none;
+}
+
+
 form {
 	border: rgba(192,192,192,0.65) 1px solid;
-	border-radius: 50%;
+	border-radius: 40%;
 	position: absolute;
-	width: 20vw;
-	height: 20vh;
+	width: 22vw;
+	height: 22vh;
 	top: 15vh;
 	left: 10vw;
 	display: flex;
@@ -36,7 +63,9 @@ form {
 	flex-wrap: nowrap;
 	justify-content: space-around;
 	align-items: center;
-	background: linear-gradient( to right, rgba(192,192,192,0.65), rgba(238,232,170,0.65) );
-	/* box-shadow: 10px 20px 30px, rgb(192,192,192); */
+	background: linear-gradient( to right, rgba(192,192,192,0.8), rgba(238,232,170,0.8) );
+}
+
+form:hover {
 	box-shadow: 5px 20px 100px rgb(238,232,170);
 }

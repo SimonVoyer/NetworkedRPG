@@ -4,6 +4,7 @@
 	border: black 1px solid;
 	margin-bottom: 25px;
 	border-radius: 40%;
+	cursor: pointer;
 }
 
 .content {

@@ -13,11 +13,7 @@
 		}
 
 		protected function executeAction() {
-			$data = [];
-			$data["key"] = $_SESSION["key"];
-			if (empty($_SESSION["availableGames"])) {
-				$_SESSION["availableGames"] = $this->callAPI("list", $data);
-			}
+
 		}
 
 	}

@@ -4,6 +4,7 @@
 		session_start();
 	}
 
-	if (isset($_SESSION["availableGames"])){
-		echo json_encode($_SESSION["availableGames"]);
-	}
+	require_once("../action/AvailableGamesListAction.php");
+	$action = new AvailableGamesListAction();
+	$action->execute();
+	echo json_encode($action->APIResponse);

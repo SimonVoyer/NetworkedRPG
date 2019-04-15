@@ -14,19 +14,19 @@
 		if (isset($_COOKIE["username"])) {
 			?>
 			<div class = "input">
-				username: <input type="text" name="username" id="username_input" value=<?=$_COOKIE["username"]  ?> >
+				username: <input type="text" name="username" id="username_input" size="12"value=<?=$_COOKIE["username"]  ?>  >
 			</div>
 		<?php
 		} else {
 			?>
 			<div class = "input">
-				username: <input type="text" name="username" id="username_input">
+				username: <input type="text" name="username" id="username_input" size="12">
 			</div>
 			<?php
 		}
 	?>
 		<div class = "input">
-			password: <input type="password" name="password" id="password_input">
+			password: <input type="password" name="password" id="password_input" size="12">
 		</div>
 		<button type="submit">
 			connection

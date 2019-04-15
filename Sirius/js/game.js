@@ -81,9 +81,14 @@ const initEventListeners = (zelda, elderSpawn) => {
 }
 
 const mageSpawnManager = allies => {
+	console.log("in mage spawn manager");
+
 	for (let index = 0; index < allies.length; ++index) {
 		const mage = allies[index];
 		const playerJSON = stateJSON.other_players[index];
+		if (mage.isSpawned === true) {
+			mage.updateStats(playerJSON.hp, playerJSON.mp)
+		}
 		if (mage.id <= stateJSON.other_players.length && mage.isSpawned === false) {
 			mage.spawn(playerJSON.name, playerJSON.hp, playerJSON.max_hp, playerJSON.mp, playerJSON.max_mp);
 		} else if (mage.id > stateJSON.other_players.length && mage.isSpawned === true) {
@@ -95,8 +100,6 @@ const mageSpawnManager = allies => {
 const mageAttackManager = allies => {
 	for (let index = 0; index < stateJSON.other_players.length; ++index) {
 		const playerJSON = stateJSON.other_players[index];
-		console.log(playerJSON);
-		console.log("ally at current index = "+ allies[index] + "-- index being = " + index);
 		if (playerJSON.attacked !== "--") {
 			if (allies[index].isSpawned === true){
 				allies[index].attack();

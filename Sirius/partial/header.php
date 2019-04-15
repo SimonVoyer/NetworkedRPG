@@ -49,3 +49,13 @@
 	<script src="js/musicManager.js"></script>
 </head>
 <body>
+
+<?php
+	if(preg_match("/lobby.php/", $_SERVER["PHP_SELF"]) === 1  || preg_match("/lobby.php/", $_SERVER["PHP_SELF"]) === 1 ) {
+		?>
+			<header>
+				<a href="connection.php"></a>
+			</header>
+		<?php
+	}
+?>

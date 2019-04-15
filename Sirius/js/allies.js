@@ -89,6 +89,13 @@ class Allies {
 		this.sprite = null;
 	}
 
+	updateStats(hp,mp) {
+		console.log("in update stats");
+
+		this.hp = hp;
+		this.mp = mp;
+	}
+
 	battleStance1(){
 		let columnCount = 4;
 		let rowCount = 1;

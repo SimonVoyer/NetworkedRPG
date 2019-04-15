@@ -24,9 +24,8 @@ const setClickListener = (node,id) => {
 	}
 }
 
-
 const gameListManager = () => {
-	setInterval( ()=> fetch("phpProcessing/availableGamesList.php", {
+	fetch("phpProcessing/availableGamesList.php", {
 		credentials: 'include'})
 	  .then(response => response.json())
 	  .then(data => {
@@ -64,7 +63,8 @@ const gameListManager = () => {
 			  node.appendChild(countDiv);
 			  node.appendChild(expDiv);
 			  container.appendChild(node);
-		  });
-	  }),
-	  2000);
+		 });
+		 setTimeout(()=>gameListManager(),2000);
+	});
+
 }
