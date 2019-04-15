@@ -45,15 +45,15 @@
 			<?php
 		}
 	?>
-	<script src="js/utilities.js"></script>
-	<script src="js/musicManager.js"></script>
+	<script src="js/shared/utilities.js"></script>
+	<script src="js/shared/musicManager.js"></script>
 </head>
 <body>
 
 <?php
 	if(preg_match("/lobby.php/", $_SERVER["PHP_SELF"]) === 1  || preg_match("/game.php/", $_SERVER["PHP_SELF"]) === 1 ) {
 		?>
-		<script src="js/header.js"></script>
+		<script src="js/shared/header.js"></script>
 			<header>
 				<span id="disconnect">Disconnect</span>
 				<span id="status">Status</span>
