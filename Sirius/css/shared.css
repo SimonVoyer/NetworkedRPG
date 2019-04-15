@@ -13,4 +13,9 @@ html {
 
 header{
 	color: white;
+
+}
+
+header:hover {
+	cursor: pointer;
 }
