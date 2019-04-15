@@ -51,10 +51,12 @@
 <body>
 
 <?php
-	if(preg_match("/lobby.php/", $_SERVER["PHP_SELF"]) === 1  || preg_match("/lobby.php/", $_SERVER["PHP_SELF"]) === 1 ) {
+	if(preg_match("/lobby.php/", $_SERVER["PHP_SELF"]) === 1  || preg_match("/game.php/", $_SERVER["PHP_SELF"]) === 1 ) {
 		?>
+		<script src="js/header.js"></script>
 			<header>
-				<a href="connection.php"></a>
+				<span id="disconnect">Disconnect</span>
+				<span id="status">Status</span>
 			</header>
 		<?php
 	}
