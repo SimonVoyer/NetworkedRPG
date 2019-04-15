@@ -81,25 +81,22 @@ const initEventListeners = (zelda, elderSpawn) => {
 }
 
 const mageSpawnManager = allies => {
-	allies.forEach(mage => {
-		console.log("mage id = "+ mage.id + " --- lenght" + stateJSON.other_players.length);
-
+	for (let index = 0; index < allies.length; ++index) {
+		const mage = allies[index];
+		const playerJSON = stateJSON.other_players[index];
 		if (mage.id <= stateJSON.other_players.length && mage.isSpawned === false) {
-			mage.spawn();
+			mage.spawn(playerJSON.name, playerJSON.hp, playerJSON.max_hp, playerJSON.mp, playerJSON.max_mp);
 		} else if (mage.id > stateJSON.other_players.length && mage.isSpawned === true) {
 			mage.despawn();
 		}
-	});
+	}
 }
 
 const mageAttackManager = allies => {
-	console.log("allies = "+ allies +" --- allies length = " + allies.length);
-
 	for (let index = 0; index < stateJSON.other_players.length; ++index) {
 		const playerJSON = stateJSON.other_players[index];
 		console.log(playerJSON);
 		console.log("ally at current index = "+ allies[index] + "-- index being = " + index);
-
 		if (playerJSON.attacked !== "--") {
 			if (allies[index].isSpawned === true){
 				allies[index].attack();
@@ -127,7 +124,7 @@ const fetchGameState = (zelda,elderSpawn, allies) => {
 		.then(data => {
 			postFetch = new Date();
 			stateJSON = data;
-			//console.log(JSON.stringify(data));
+			console.log(JSON.stringify(data));
 			stateDispatcher(elderSpawn,zelda, allies);
 			setTimeout(()=>fetchGameState(zelda,elderSpawn, allies), 2000);
 		}

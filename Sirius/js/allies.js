@@ -8,6 +8,11 @@ class Allies {
 		this.elderSpawn = elderSpawn;
 		this.y = window.innerHeight
 		this.isSpawned = false;
+		this.name = null;
+		this.hp = null;
+		this.maxHP = null;
+		this.mp = null;
+		this.maxMP = null;
 		this.fireball = new Fireball(canvas, context);
 
 		if (this.id == 1) {
@@ -33,11 +38,19 @@ class Allies {
 		} else if (this.id == 3) {
 			this.x = this.canvas.width * 0.8/9;
 		}
+
 		if(this.sprite != null)	{
+			this.context.font = "16px Arial";
+			this.context.fillStyle = "white";
+			this.context.textAlign = "center";
+			this.context.fillText(this.name, this.x, this.y - 200);
+			let hpValue = this.hp + " / " + this.maxHP + " HP";
+			this.context.fillText(hpValue, this.x, this.y - 180);
+			let mpValue = this.mp + " / " + this.maxMP + " MP";
+			this.context.fillText(mpValue, this.x, this.y - 160);
 			this.sprite.tick(this.x, this.y, this.context);
 			this.fireball.tick();
 		}
-
 	}
 
 	thunder(){
@@ -52,8 +65,13 @@ class Allies {
 		this.sprite.changeMinMaxInterval(1, columnCount);
 	}
 
-	spawn() {
+	spawn(name, hp, maxHP, mp, maxMP) {
 		this.isSpawned = true;
+		this.name = name;
+		this.hp = hp;
+		this.maxHP = maxHP;
+		this.mp = mp;
+		this.maxMP = maxMP;
 		this.thunder();
 		setTimeout(()=>this.battleStance(), 500);
 	}
@@ -61,7 +79,10 @@ class Allies {
 	despawn() {
 		this.thunder();
 		this.isSpawned = false;
-		setTimeout(()=>this.vanish(), 500);
+		this.name = null;
+		this.hp = null;
+		this.mp = null;
+		setTimeout(()=> this.vanish(), 500);
 	}
 
 	vanish() {
@@ -105,7 +126,7 @@ class Allies {
 	}
 
 	attack1(){
-		this.fireball.cast(this.x, this.y - 200, this.elderSpawn.x, this.elderSpawn.y )
+		this.fireball.cast(this.x, this.y - 300, this.elderSpawn.x, this.elderSpawn.y )
 		let columnCount = 20;
 		let rowCount = 1;
 		let refreshDelay = 100;
@@ -119,7 +140,7 @@ class Allies {
 	}
 
 	attack2(){
-		this.fireball.cast(this.x, this.y - 200, this.elderSpawn.x, this.elderSpawn.y )
+		this.fireball.cast(this.x, this.y - 300, this.elderSpawn.x, this.elderSpawn.y )
 		let columnCount = 20;
 		let rowCount = 1;
 		let refreshDelay = 100;
@@ -133,7 +154,7 @@ class Allies {
 	}
 
 	attack3(){
-		this.fireball.cast(this.x, this.y - 200, this.elderSpawn.x, this.elderSpawn.y )
+		this.fireball.cast(this.x, this.y - 300, this.elderSpawn.x, this.elderSpawn.y )
 		let columnCount = 50;
 		let rowCount = 1;
 		let refreshDelay = 15;
