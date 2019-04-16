@@ -5,6 +5,7 @@ class ElderSpawn {
 		this.canvas = canvas;
 		this.context = context;
 		this.isAlive = true;
+		this.hp = -1
 		this.battlePose();
 	}
 
@@ -13,7 +14,18 @@ class ElderSpawn {
 		this.y =  window.innerHeight;
 		if(this.sprite != null)	{
 			this.sprite.tick(this.x, this.y, this.context);
+			if (this.hp > 0) {
+				this.context.font = "16px Arial";
+				this.context.fillStyle = "white";
+				this.context.textAlign = "center";
+				let hpValue = this.hp + " HP"
+				this.context.fillText(hpValue, this.x, this.y - 600);
+			}
 		}
+	}
+
+	updateHP(hp){
+		this.hp = hp
 	}
 
 	battlePose() {

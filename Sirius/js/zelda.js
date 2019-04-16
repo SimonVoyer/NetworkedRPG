@@ -9,6 +9,11 @@ class Zelda {
 		this.wiseSpirit = new Athos(musicManager,canvas, context, elderSpawn);
 		this.ice = new Ice(canvas, context)
 		this.firewall = new Firewall(canvas, context);
+		this.hp = -1
+		this.mapHP = -1
+		this.mp = -1
+		this.maxMP = -1
+		this.isReady = true;
 	}
 
 	tick(){
@@ -18,6 +23,27 @@ class Zelda {
 		this.wiseSpirit.tick();
 		this.ice.tick();
 		this.firewall.tick();
+		if (this.hp > 0) {
+			this.context.font = "16px Arial";
+			this.context.fillStyle = "white";
+			this.context.textAlign = "center";
+			let hpValue = this.hp + " /  "+this.maxHP + " HP"
+			let mpValue = this.mp + " / "+ this.maxMP + " MP"
+			this.context.fillText(hpValue, this.x, this.y - 220);
+			this.context.fillText(mpValue, this.x, this.y - 200);
+			if (this.isReady){
+				this.context.fillText("Spell Ready", this.x, this.y - 180);
+			} else {
+				this.context.fillText("Magic Recharging", this.x, this.y - 180);
+			}
+		}
+	}
+
+	updateStats(hp, maxHP, mp, maxMP){
+		this.hp = hp;
+		this.maxHP = maxHP;
+		this.mp = mp;
+		this.maxMP = maxMP;
 	}
 
 	battlePose() {

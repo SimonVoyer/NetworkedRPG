@@ -68,7 +68,6 @@ const deactivateButtons = () => {
 	document.getElementById("attack2").removeEventListener("click", specialButton1);
 	document.getElementById("attack3").removeEventListener("click", specialButton2);
 	setTimeout(()=>initEventListeners(),2000);
-
 }
 
 
@@ -113,6 +112,8 @@ const stateDispatcher = () => {
 		setTimeout(()=> zelda.tookDamage(),300)
 		elderSpawn.attack();
 	}
+	elderSpawn.updateHP(stateJSON.game.hp)
+	zelda.updateStats(stateJSON.player.hp, stateJSON.player.max_hp, stateJSON.player.mp, stateJSON.player.max_mp)
 	mageSpawnManager();
 	mageAttackManager();
 }

@@ -55,7 +55,8 @@ canvas {
 }
 
 #disconnect {
-	color: #00b8ff;
+	position: relative;
+	top: 1vh;
 }
 
 html {
