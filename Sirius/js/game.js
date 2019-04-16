@@ -142,7 +142,6 @@ const fetchGameState = ( ) => {
 		.then(data => {
 			postFetch = new Date();
 			stateJSON = data;
-			console.log(JSON.stringify(data));
 			stateDispatcher();
 			setTimeout(()=>fetchGameState(), 2000);
 		}
