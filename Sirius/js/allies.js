@@ -130,6 +130,7 @@ class Allies {
 	}
 
 	attack1(){
+		this.musicManager.playFireSpell();
 		this.fireball.cast(this.x, this.y - 300, this.elderSpawn.x, this.elderSpawn.y )
 		let columnCount = 20;
 		let rowCount = 1;
@@ -144,6 +145,7 @@ class Allies {
 	}
 
 	attack2(){
+		this.musicManager.playFireSpell();
 		this.fireball.cast(this.x, this.y - 300, this.elderSpawn.x, this.elderSpawn.y )
 		let columnCount = 20;
 		let rowCount = 1;
@@ -158,6 +160,7 @@ class Allies {
 	}
 
 	attack3(){
+		this.musicManager.playFireSpell();
 		this.fireball.cast(this.x, this.y - 300, this.elderSpawn.x, this.elderSpawn.y )
 		let columnCount = 50;
 		let rowCount = 1;
