@@ -85,9 +85,9 @@ const mageSpawnManager =() => {
 		if (mage.isSpawned === true) {
 			mage.updateStats(playerJSON.hp, playerJSON.mp)
 		}
-		if (mage.id <= stateJSON.other_players.length && mage.isSpawned === false) {
+		if (mage.id <= stateJSON.other_players.length && mage.isSpawned === false && playerJSON.hp >= -1) {
 			mage.spawn(playerJSON.name, playerJSON.hp, playerJSON.max_hp, playerJSON.mp, playerJSON.max_mp);
-		} else if (mage.id > stateJSON.other_players.length && mage.isSpawned === true) {
+		} else if (mage.id > stateJSON.other_players.length && mage.isSpawned === true || playerJSON.hp <= 0) {
 			mage.despawn();
 		}
 	}
