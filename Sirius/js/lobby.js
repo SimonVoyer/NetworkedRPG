@@ -79,14 +79,14 @@ const parseUserInfo = userInfo => {
 	agilityNode.appendChild(textNodeAgility);
 	container.appendChild(agilityNode);
 
-	let nbOfVictory = "Number of Victories   " + userInfo.victories;
+	let nbOfVictory = "Number of Victories" + userInfo.victories;
 	let textNodeVictory = document.createTextNode(nbOfVictory);
 	let victoryNode = document.createElement("div");
 	victoryNode.setAttribute("class", "userInfoValue");
 	victoryNode.appendChild(textNodeVictory);
 	container.appendChild(victoryNode);
 
-	let welcomeText = "Battlechant   " + userInfo.welcome_text;
+	let welcomeText = "Battlechant" + userInfo.welcome_text;
 	let textNodeWelcome = document.createTextNode(welcomeText);
 	let welcomeNode = document.createElement("div");
 	welcomeNode.setAttribute("class", "userInfoValue");
