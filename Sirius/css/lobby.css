@@ -38,6 +38,8 @@
 	top: 24vh;
 	left: 12vw;
 	z-index: -1;
+	border: rgba(0,0,0,0) solid 1px;
+	border-radius: 10%;
 }
 
 html{
@@ -67,3 +69,7 @@ html{
 #disconnect:hover, #status:hover {
 	cursor: pointer;
 }
+
+::-webkit-scrollbar {
+	color: rgba(0,0,0,0);
+  }
