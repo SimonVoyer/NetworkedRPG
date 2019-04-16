@@ -12,7 +12,7 @@
 	top:8vh;
 	left: 25vw;
 	width: 50vw;
-	height: 80vh;
+	height:250px;
 }
 
 #attackButtons:hover {
@@ -86,4 +86,13 @@ html {
 	z-index: 5;
 	width: 150px;
 	height: 156px;
+}
+
+#nayru, #din, #farore{
+	color: white;
+	font-size: 1.5vw;
+	position: relative;
+	left: -3vw;
+	bottom: -15vh;
+
 }

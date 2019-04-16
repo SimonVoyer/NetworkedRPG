@@ -13,12 +13,10 @@
 </div>
 
 <div id="attackButtons">
-	<div class="attackButton" id="attack1"> </div>
+	<div class="attackButton" id="attack1"></div>
 	<div class="attackButton" id="attack2"></div>
 	<div class="attackButton" id="attack3"></div>
 </div>
-
-
 
 <?php
 	require_once("partial/footer.php");
