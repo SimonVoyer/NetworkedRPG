@@ -13,47 +13,12 @@ window.onload = () => {
 
 
 const parseUserInfo = userInfo => {
-	let userName = "Name: " +userInfo.name;
-
-// base_level_exp: 2127500
-// ​
-// char_agility: "13"
-// ​
-// char_energy: "109"
-// ​
-// char_strength: "2"
-// ​
-// char_vitality: "66"
-// ​
-// dmg_red: 29
-// ​
-// dodge_chance: 10.3
-// ​
-// exp: "2144760"
-// ​
-// hp: 127
-// ​
-// last_game_state: "win"
-// ​
-// level: "38"
-// ​
-// loss: "93"
-// ​
-// mp: 337
-// ​
-// next_level_exp: 2232500
-// ​
-// type: "Magic"
-// ​
-// unspent_points: "0"
-// ​
-// unspent_skills: "0"
-// ​
-// username: "Archmage"
-// ​
-// victories: "245"
-// ​
-// welcome_text: "Let me face the peril."
+	let userName = "Name: " + userInfo.name;
+	let userType = "Type: "+ userInfo.type;
+	let userLevel = "Magic Power Level: " + userinfo.level;
+	let userEnergy = "Arcane Energy Level: " + userInfo.char_energy;
+	let nbOfVictory = "Number of Victories: " + userInfo.victories;
+	let welcomeText = "Battlechant: " + userInfo.welcome_text;
 }
 
 
