@@ -45,21 +45,25 @@ const normalButton = () => {
 }
 
 const specialButton1 = () => {
-	sendAttack("Special1");
-	deactivateButtons();
-	setTimeout(()=> zelda.hover(),300);
-	setTimeout(()=> zelda.land(),2000)
-	setTimeout(()=> zelda.battlePose(), 2200);
-	zelda.startJump();
-	setTimeout(()=> elderSpawn.tookDamage(), 1500);
+	if (zelda.mp >= zelda.manaCost1) {
+		sendAttack("Special1");
+		deactivateButtons();
+		setTimeout(()=> zelda.hover(),300);
+		setTimeout(()=> zelda.land(),2000)
+		setTimeout(()=> zelda.battlePose(), 2200);
+		zelda.startJump();
+		setTimeout(()=> elderSpawn.tookDamage(), 1500);
+	}
 }
 
 const specialButton2 = () =>{
-	sendAttack("Special2");
-	deactivateButtons();
-	zelda.basicSpell(false);
-	zelda.summonSpirit();
-	setTimeout(()=> elderSpawn.tookDamage(),500);
+	if (zelda.mp >= zelda.manaCost2) {
+		sendAttack("Special2");
+		deactivateButtons();
+		zelda.basicSpell(false);
+		zelda.summonSpirit();
+		setTimeout(()=> elderSpawn.tookDamage(),500);
+	}
 }
 
 const deactivateButtons = () => {
@@ -82,13 +86,17 @@ const mageSpawnManager =() => {
 	for (let index = 0; index < allies.length; ++index) {
 		const mage = allies[index];
 		const playerJSON = stateJSON.other_players[index];
-		if (mage.isSpawned === true) {
-			mage.updateStats(playerJSON.hp, playerJSON.mp)
-		}
-		if (mage.id <= stateJSON.other_players.length && mage.isSpawned === false && playerJSON.hp >= -1) {
-			mage.spawn(playerJSON.name, playerJSON.hp, playerJSON.max_hp, playerJSON.mp, playerJSON.max_mp);
-		} else if (mage.id > stateJSON.other_players.length && mage.isSpawned === true || playerJSON.hp <= 0) {
+		if (typeof playerJSON === 'undefined' && mage.isSpawned  ) {
 			mage.despawn();
+		} else {
+			if (mage.isSpawned === true) {
+				mage.updateStats(playerJSON.hp, playerJSON.mp)
+			}
+			if (mage.id <= stateJSON.other_players.length && mage.isSpawned === false ) {
+				mage.spawn(playerJSON.name, playerJSON.hp, playerJSON.max_hp, playerJSON.mp, playerJSON.max_mp);
+			} else if (mage.id > stateJSON.other_players.length && mage.isSpawned === true ) {
+				mage.despawn();
+			}
 		}
 	}
 }
@@ -114,7 +122,7 @@ const stateDispatcher = () => {
 		elderSpawn.attack();
 	}
 	elderSpawn.updateHP(stateJSON.game.hp)
-	zelda.updateStats(stateJSON.player.hp, stateJSON.player.max_hp, stateJSON.player.mp, stateJSON.player.max_mp)
+	zelda.updateStats(stateJSON.player.hp, stateJSON.player.max_hp, stateJSON.player.mp, stateJSON.player.max_mp, stateJSON.player.skills[1].cost,stateJSON.player.skills[2].cost )
 	mageSpawnManager();
 	mageAttackManager();
 }

@@ -13,6 +13,8 @@ class Zelda {
 		this.mapHP = -1
 		this.mp = -1
 		this.maxMP = -1
+		this.manaCost1 = 0;
+		this.manaCost2 = 0;
 		this.spellIsReady = true;
 	}
 
@@ -39,12 +41,16 @@ class Zelda {
 		}
 	}
 
-	updateStats(hp, maxHP, mp, maxMP){
+	updateStats(hp, maxHP, mp, maxMP, manaCost1, manaCost2){
 		this.hp = hp;
 		this.maxHP = maxHP;
 		this.mp = mp;
 		this.maxMP = maxMP;
+		this.manaCost1 = manaCost1;
+		this.manaCost2 = manaCost2;
 	}
+
+
 
 	battlePose() {
 		let columnCount = 12;
