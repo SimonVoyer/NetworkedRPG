@@ -1,17 +1,20 @@
 .availableGame {
-	width: 15vw;
-	height: 16vh;
-	border: black 1px solid;
+	width: 16vw;
+	height: 15vh;
+	border: rgba(0,0,0,0) 1px solid;
 	margin-bottom: 25px;
-	border-radius: 40%;
+	border-radius: 30%;
 	cursor: pointer;
 	font-size: 5vw;
+	background: radial-gradient(rgba(136,24,49,0.8), rgba(93,62,77,0.8));
+	/* , rgba(201,140,109,0.5) */
 }
 
 .content {
 	text-align: center;
 	font-weight: bold;
 	font-size: 1.2vw;
+	color:rgb(216,216,216);
 }
 
 #eye {
@@ -30,11 +33,12 @@
 	flex-wrap: wrap;
 	overflow: scroll;
 	overflow-x: hidden;
-	width: 45vw;
-	height: 35vh;
+	width: 52vw;
+	height: 50vh;
 	position: absolute;
-	top: 30vh;
-	left: 25vw;
+	top: 24vh;
+	left: 12vw;
+	z-index: -1;
 }
 
 html{
@@ -44,6 +48,14 @@ html{
 }
 
 
-#startButton {
-	max-width: 10vw;
+#statusDiv{
+	background-image: url("../images/zelda_fanart_by_dysal.jpg");
+	background-color: rgb(40,40,40);
+	background-repeat: no-repeat;
+	background-size: 746px 952px;
+	background-position-x: right;
+	width: 100vw;
+	height: 100vh;
+	z-index: 5;
+	display: "none"
 }

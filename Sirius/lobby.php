@@ -13,6 +13,8 @@
 
 	<div id="eye"></div>
 	<div id="gamesListContainer"></div>
-
+	<div id="statusDiv">
+		<div id="userInfoDiv"></div>
+	</div>
 <?php
 	require_once("partial/footer.php");

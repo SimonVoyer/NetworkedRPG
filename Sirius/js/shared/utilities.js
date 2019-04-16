@@ -19,25 +19,4 @@ const setHeaderListeners = () => {
 			}
 		});
 	}
-	activateStatus();
-}
-
-
-const fetchUserInfo = () => {
-	fetch("phpProcessing/userInfo.php", {
-		credentials: 'include'})
-	  .then(response => response.json())
-	  .then(data => {
-		console.log(data);
-		deactivateStatus();
-	});
-}
-
-const deactivateStatus = () => {
-	setTimeout(() => activateStatus(), 2000);
-	document.getElementById("status").removeEventListener("click", fetchUserInfo);
-}
-
-const activateStatus = () => {
-	document.getElementById("status").addEventListener("click", fetchUserInfo);
 }
