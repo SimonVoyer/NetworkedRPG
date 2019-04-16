@@ -52,7 +52,6 @@ const specialButton1 = () => {
 	setTimeout(()=> zelda.battlePose(), 2200);
 	zelda.startJump();
 	setTimeout(()=> elderSpawn.tookDamage(), 1500);
-
 }
 
 const specialButton2 = () =>{
@@ -68,6 +67,7 @@ const deactivateButtons = () => {
 	document.getElementById("attack2").removeEventListener("click", specialButton1);
 	document.getElementById("attack3").removeEventListener("click", specialButton2);
 	setTimeout(()=>initEventListeners(),2000);
+	zelda.spellIsReady = false;
 }
 
 
@@ -75,6 +75,7 @@ const initEventListeners = () => {
 	document.getElementById("attack1").addEventListener("click",  normalButton);
 	document.getElementById("attack2").addEventListener("click",  specialButton1);
 	document.getElementById("attack3").addEventListener("click", specialButton2);
+	zelda.spellIsReady = true;
 }
 
 const mageSpawnManager =() => {

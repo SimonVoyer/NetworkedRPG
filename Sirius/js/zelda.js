@@ -13,7 +13,7 @@ class Zelda {
 		this.mapHP = -1
 		this.mp = -1
 		this.maxMP = -1
-		this.isReady = true;
+		this.spellIsReady = true;
 	}
 
 	tick(){
@@ -31,7 +31,7 @@ class Zelda {
 			let mpValue = this.mp + " / "+ this.maxMP + " MP"
 			this.context.fillText(hpValue, this.x, this.y - 220);
 			this.context.fillText(mpValue, this.x, this.y - 200);
-			if (this.isReady){
+			if (this.spellIsReady){
 				this.context.fillText("Spell Ready", this.x, this.y - 180);
 			} else {
 				this.context.fillText("Magic Recharging", this.x, this.y - 180);
