@@ -135,7 +135,6 @@ class MusicManager {
 	playFireSpell() {
 		let fireSpell = new Audio(this.fireSpellPath)
 		fireSpell.loop = false;
-		//fireSpell.volume = 0.1;
 		fireSpell.play();
 	}
 
