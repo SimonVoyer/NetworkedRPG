@@ -7,59 +7,92 @@ window.onload = () => {
 	setHeaderListeners();
 	setTimeout(activateStatus, 2000);
 	toggleStatus = toggleStatusBlock;
+	document.getElementById("statusDiv").style.display = "none";
 	let sheikahEye = new SheikahEye();
 	sheikahEye.tick();
 }
 
 const parseUserInfo = userInfo => {
-	console.log("in parse user info "+ userInfo);
-
 	let container = document.getElementById("userInfoDiv");
 	clearChildren(container);
 
-	let userName = "Name: " + userInfo.name;
+	let userName = "Name    " + userInfo.username;
 	let textNodeName = document.createTextNode(userName);
 	let nameNode = document.createElement("div");
 	nameNode.setAttribute("class", "userInfoValue");
 	nameNode.appendChild(textNodeName);
 	container.appendChild(nameNode);
 
-	let userType = "Type: "+ userInfo.type;
+	let userType = "Type   "+ userInfo.type;
 	let textNodeType = document.createTextNode(userType);
 	let typeNode = document.createElement("div");
 	typeNode.setAttribute("class", "userInfoValue");
 	typeNode.appendChild(textNodeType);
 	container.appendChild(typeNode);
 
-	let userLevel = "Magic Power Level: " + userInfo.level;
+	let userLevel = "Power Level   " + userInfo.level;
 	let textNodeLevel = document.createTextNode(userLevel);
 	let levelNode = document.createElement("div");
 	levelNode.setAttribute("class", "userInfoValue");
 	levelNode.appendChild(textNodeLevel);
 	container.appendChild(levelNode);
 
-	let userEnergy = "Arcane Energy Level: " + userInfo.char_energy;
+	let userHP = "HP Level   " + userInfo.hp;
+	let textNodeHP = document.createTextNode(userHP);
+	let HPNode = document.createElement("div");
+	HPNode.setAttribute("class", "userInfoValue");
+	HPNode.appendChild(textNodeHP);
+	container.appendChild(HPNode);
+
+	let userMP = "MP Level   " + userInfo.mp;
+	let textNodeMP = document.createTextNode(userMP);
+	let MPNode = document.createElement("div");
+	MPNode.setAttribute("class", "userInfoValue");
+	MPNode.appendChild(textNodeMP);
+	container.appendChild(MPNode);
+
+	let userEnergy = "Energy Level   " + userInfo.char_energy;
 	let textNodeEnergy = document.createTextNode(userEnergy);
 	let energyNode = document.createElement("div");
 	energyNode.setAttribute("class", "userInfoValue");
 	energyNode.appendChild(textNodeEnergy);
 	container.appendChild(energyNode);
 
-	let nbOfVictory = "Number of Victories: " + userInfo.victories;
+	let userVitality = "Vitality Level   " + userInfo.char_vitality;
+	let textNodeVitality = document.createTextNode(userVitality);
+	let vitalityNode = document.createElement("div");
+	vitalityNode.setAttribute("class", "userInfoValue");
+	vitalityNode.appendChild(textNodeVitality);
+	container.appendChild(vitalityNode);
+
+	let userStrength = "Strength Level   " + userInfo.char_strength;
+	let textNodeStrength = document.createTextNode(userStrength);
+	let strengthNode = document.createElement("div");
+	strengthNode.setAttribute("class", "userInfoValue");
+	strengthNode.appendChild(textNodeStrength);
+	container.appendChild(strengthNode);
+
+	let userAgility = "Agility Level   " + userInfo.char_agility;
+	let textNodeAgility = document.createTextNode(userAgility);
+	let agilityNode = document.createElement("div");
+	agilityNode.setAttribute("class", "userInfoValue");
+	agilityNode.appendChild(textNodeAgility);
+	container.appendChild(agilityNode);
+
+	let nbOfVictory = "Number of Victories   " + userInfo.victories;
 	let textNodeVictory = document.createTextNode(nbOfVictory);
 	let victoryNode = document.createElement("div");
 	victoryNode.setAttribute("class", "userInfoValue");
 	victoryNode.appendChild(textNodeVictory);
 	container.appendChild(victoryNode);
 
-	let welcomeText = "Battlechant: " + userInfo.welcome_text;
+	let welcomeText = "Battlechant   " + userInfo.welcome_text;
 	let textNodeWelcome = document.createTextNode(welcomeText);
 	let welcomeNode = document.createElement("div");
 	welcomeNode.setAttribute("class", "userInfoValue");
 	welcomeNode.appendChild(textNodeWelcome);
 	container.appendChild(welcomeNode);
 }
-
 
 const fetchUserInfo = () => {
 	fetch("phpProcessing/userInfo.php", {
@@ -92,7 +125,6 @@ const toggleStatusBlock = () => {
 	toggleStatus = toggleStatusNone;
 }
 
-
 const setClickListener = (node,id) => {
 	node.onclick = () => {
 		let formData = new FormData();
@@ -115,7 +147,6 @@ const gameListManager = () => {
 		credentials: 'include'})
 	  .then(response => response.json())
 	  .then(data => {
-		  console.log(data);
 		  let container = document.getElementById("gamesListContainer");
 		  clearChildren(container);
 		  data.forEach(gameJSON => {
