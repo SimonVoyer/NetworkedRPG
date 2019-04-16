@@ -7,7 +7,6 @@
 	cursor: pointer;
 	font-size: 5vw;
 	background: radial-gradient(rgba(136,24,49,0.8), rgba(93,62,77,0.8));
-	/* , rgba(201,140,109,0.5) */
 }
 
 .content {
@@ -58,4 +57,12 @@ html{
 	height: 100vh;
 	z-index: 5;
 	display: "none"
+}
+
+#userInfoDiv {
+
+}
+
+.userInfoValue {
+
 }

@@ -13,12 +13,20 @@ window.onload = () => {
 
 
 const parseUserInfo = userInfo => {
+	let container = document.getElementById("userInfoDiv");
 	let userName = "Name: " + userInfo.name;
+	let textNodeName = document.createTextNode(userName);
 	let userType = "Type: "+ userInfo.type;
+	let textNodeType = document.createTextNode(userType);
 	let userLevel = "Magic Power Level: " + userinfo.level;
+	let textNodeLevel = document.createTextNode(userLevel);
 	let userEnergy = "Arcane Energy Level: " + userInfo.char_energy;
+	let textNodeEnergy = document.createTextNode(userEnergy);
 	let nbOfVictory = "Number of Victories: " + userInfo.victories;
+	let textNodeVictory = document.createTextNode(nbofVictory);
 	let welcomeText = "Battlechant: " + userInfo.welcome_text;
+	let textNodeWelcome = document.createTextNode(welcomeText);
+
 }
 
 
