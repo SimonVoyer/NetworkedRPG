@@ -1,39 +1,42 @@
 .attackButton {
 	display: block;
-	width: 10vw;
-	height: 10vh;
-	border: black 2px solid;
-	border-radius: 10px;
+	margin-bottom: 3vh;
 }
 
 #attackButtons {
 	display:flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: space-around;
 	flex-wrap: nowrap;
 	position: absolute;
-	top:25vh;
-	left: 2vw;
+	top:8vh;
+	left: 25vw;
 	width: 50vw;
-	height: 30vh;
+	height: 80vh;
 }
 
 #attackButtons:hover {
 	cursor: pointer;
 }
 
-
 #attack1 {
-	background-color: blue;
+	background-image: url("../images/nayru_185x185.png");
+	width: 185px;
+	height: 185px;
 }
 
 #attack2 {
-	background-color: green;
+	background-image: url("../images/din.png");
+	width: 200px;
+	height: 200px;
 }
 
 #attack3 {
-	background-color: red;
+	background-image: url("../images/farore_200x200.png");
+	width: 200px;
+	height: 200px;
 }
+
 
 body{
 	width: 100%;

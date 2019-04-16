@@ -8,9 +8,9 @@
 	require_once("partial/header.php");
 ?>
 
-<div id="portraitContainer">
+<!-- <div id="portraitContainer">
 	<img src="images/zelda_portrait_150x156.png" alt="portrait_of_zelda" id="portrait">
-</div>
+</div> -->
 
 <div id="canvasContainer">
 	<canvas width=1600 height=700></canvas>
