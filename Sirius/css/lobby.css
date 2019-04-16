@@ -64,6 +64,6 @@ html{
 	font-size: 3vw;
 }
 
-.userInfoValue {
-
+#disconnect:hover, #status:hover {
+	cursor: pointer;
 }

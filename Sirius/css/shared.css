@@ -38,6 +38,6 @@ header{
 	top: 0.5vh;
 }
 
-#status:hover, #disconnect:hover{
+#status:hover, #disconnect:hover, {
 	cursor: pointer;
 }

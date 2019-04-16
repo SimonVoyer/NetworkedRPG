@@ -22,7 +22,15 @@ window.onload = () => {
 	setTimeout(()=>fetchGameState(),2000);
 	setHeaderListeners();
 	initEventListeners();
+	initLobbyListener();
 	tick( background, context);
+}
+
+
+const initLobbyListener = () => {
+	document.getElementById("lobby").onclick = () =>{
+		window.location.href = "lobby.php";
+	}
 }
 
 const sendAttack = (attackName) => {

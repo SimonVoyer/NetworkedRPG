@@ -58,9 +58,13 @@ canvas {
 	height: 700px;
 }
 
-#disconnect {
+#disconnect, #lobby {
 	position: relative;
 	top: 1vh;
+}
+
+#lobby:hover #disconnect:hover {
+	cursor: pointer;
 }
 
 html {

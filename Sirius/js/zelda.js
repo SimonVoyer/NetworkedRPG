@@ -50,8 +50,6 @@ class Zelda {
 		this.manaCost2 = manaCost2;
 	}
 
-
-
 	battlePose() {
 		let columnCount = 12;
 		let rowCount = 1;

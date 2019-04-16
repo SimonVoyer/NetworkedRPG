@@ -57,6 +57,8 @@
 			<header>
 				<span id="disconnect">Disconnect</span>
 				<span id="status">Status</span>
+				<span id="lobby" style="display:none">Lobby</span>
+
 			</header>
 		<?php
 	} else if (preg_match("/game.php/", $_SERVER["PHP_SELF"]) === 1) {
@@ -64,6 +66,7 @@
 			<header>
 				<span id="disconnect">Disconnect</span>
 				<span id="status" style="display:none">Status</span>
+				<span id="lobby">Lobby</span>
 			</header>
 		<?php
 	}
