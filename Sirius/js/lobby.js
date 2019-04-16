@@ -5,45 +5,72 @@ window.onload = () => {
 	musicManager.playFallen();
 	setTimeout(()=>gameListManager(),2000);
 	setHeaderListeners();
-	activateStatus();
+	setTimeout(activateStatus, 2000);
 	toggleStatus = toggleStatusBlock;
 	let sheikahEye = new SheikahEye();
 	sheikahEye.tick();
 }
 
-
 const parseUserInfo = userInfo => {
+	console.log("in parse user info "+ userInfo);
+
 	let container = document.getElementById("userInfoDiv");
+	clearChildren(container);
+
 	let userName = "Name: " + userInfo.name;
 	let textNodeName = document.createTextNode(userName);
+	let nameNode = document.createElement("div");
+	nameNode.setAttribute("class", "userInfoValue");
+	nameNode.appendChild(textNodeName);
+	container.appendChild(nameNode);
+
 	let userType = "Type: "+ userInfo.type;
 	let textNodeType = document.createTextNode(userType);
-	let userLevel = "Magic Power Level: " + userinfo.level;
+	let typeNode = document.createElement("div");
+	typeNode.setAttribute("class", "userInfoValue");
+	typeNode.appendChild(textNodeType);
+	container.appendChild(typeNode);
+
+	let userLevel = "Magic Power Level: " + userInfo.level;
 	let textNodeLevel = document.createTextNode(userLevel);
+	let levelNode = document.createElement("div");
+	levelNode.setAttribute("class", "userInfoValue");
+	levelNode.appendChild(textNodeLevel);
+	container.appendChild(levelNode);
+
 	let userEnergy = "Arcane Energy Level: " + userInfo.char_energy;
 	let textNodeEnergy = document.createTextNode(userEnergy);
+	let energyNode = document.createElement("div");
+	energyNode.setAttribute("class", "userInfoValue");
+	energyNode.appendChild(textNodeEnergy);
+	container.appendChild(energyNode);
+
 	let nbOfVictory = "Number of Victories: " + userInfo.victories;
-	let textNodeVictory = document.createTextNode(nbofVictory);
+	let textNodeVictory = document.createTextNode(nbOfVictory);
+	let victoryNode = document.createElement("div");
+	victoryNode.setAttribute("class", "userInfoValue");
+	victoryNode.appendChild(textNodeVictory);
+	container.appendChild(victoryNode);
+
 	let welcomeText = "Battlechant: " + userInfo.welcome_text;
 	let textNodeWelcome = document.createTextNode(welcomeText);
-
+	let welcomeNode = document.createElement("div");
+	welcomeNode.setAttribute("class", "userInfoValue");
+	welcomeNode.appendChild(textNodeWelcome);
+	container.appendChild(welcomeNode);
 }
 
 
 const fetchUserInfo = () => {
-	let userInfoJSON;
 	fetch("phpProcessing/userInfo.php", {
 		credentials: 'include'})
 	  .then(response => response.json())
 	  .then(data => {
-		userInfoJSON = data;
-		// console.log(data);
+		console.log("data before parse= "+data);
 		parseUserInfo(data);
 		deactivateStatus();
-
 	});
 	toggleStatus();
-	return userInfoJSON;
 }
 
 const deactivateStatus = () => {
@@ -55,7 +82,6 @@ const activateStatus = () => {
 	document.getElementById("status").addEventListener("click", fetchUserInfo);
 }
 
-//Je voulais faire une vérification si display === block met à none et vice versa, mais pour une raison que j'ignore ça n'a pas fonctionné, alors petit workaround
 const toggleStatusNone = () => {
 	document.getElementById("statusDiv").style.display = "none";
 	toggleStatus = toggleStatusBlock;
